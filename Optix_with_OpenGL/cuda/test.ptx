@@ -29,11 +29,11 @@
 	.param .b64 _ZN5optix12make_size_t4Eyyyy_param_3
 )
 ;
-.global .align 1 .b8 sysOutputBuffer[1];
-.global .align 8 .b8 theLaunchIndex[8];
-.global .align 4 .b8 sysColorBackground[12];
-.global .align 4 .b8 _ZN21rti_internal_typeinfo14theLaunchIndexE[8] = {82, 97, 121, 0, 8, 0, 0, 0};
-.global .align 4 .b8 _ZN21rti_internal_typeinfo18sysColorBackgroundE[8] = {82, 97, 121, 0, 12, 0, 0, 0};
+.global .align 8 .b8 launch_index[8];
+.global .align 1 .b8 result_buffer[1];
+.global .align 4 .b8 draw_color[12];
+.global .align 4 .b8 _ZN21rti_internal_typeinfo12launch_indexE[8] = {82, 97, 121, 0, 8, 0, 0, 0};
+.global .align 4 .b8 _ZN21rti_internal_typeinfo10draw_colorE[8] = {82, 97, 121, 0, 12, 0, 0, 0};
 .global .align 8 .u64 _ZN21rti_internal_register20reg_bitness_detectorE;
 .global .align 8 .u64 _ZN21rti_internal_register24reg_exception_64_detail0E;
 .global .align 8 .u64 _ZN21rti_internal_register24reg_exception_64_detail1E;
@@ -58,20 +58,20 @@
 .global .align 4 .u32 _ZN21rti_internal_register14reg_rayIndex_xE;
 .global .align 4 .u32 _ZN21rti_internal_register14reg_rayIndex_yE;
 .global .align 4 .u32 _ZN21rti_internal_register14reg_rayIndex_zE;
-.global .align 1 .b8 _ZN21rti_internal_typename14theLaunchIndexE[6] = {117, 105, 110, 116, 50, 0};
-.global .align 1 .b8 _ZN21rti_internal_typename18sysColorBackgroundE[7] = {102, 108, 111, 97, 116, 51, 0};
-.global .align 4 .u32 _ZN21rti_internal_typeenum14theLaunchIndexE = 4919;
-.global .align 4 .u32 _ZN21rti_internal_typeenum18sysColorBackgroundE = 4919;
-.global .align 1 .b8 _ZN21rti_internal_semantic14theLaunchIndexE[14] = {114, 116, 76, 97, 117, 110, 99, 104, 73, 110, 100, 101, 120, 0};
-.global .align 1 .b8 _ZN21rti_internal_semantic18sysColorBackgroundE[1];
-.global .align 1 .b8 _ZN23rti_internal_annotation14theLaunchIndexE[1];
-.global .align 1 .b8 _ZN23rti_internal_annotation18sysColorBackgroundE[1];
+.global .align 1 .b8 _ZN21rti_internal_typename12launch_indexE[6] = {117, 105, 110, 116, 50, 0};
+.global .align 1 .b8 _ZN21rti_internal_typename10draw_colorE[7] = {102, 108, 111, 97, 116, 51, 0};
+.global .align 4 .u32 _ZN21rti_internal_typeenum12launch_indexE = 4919;
+.global .align 4 .u32 _ZN21rti_internal_typeenum10draw_colorE = 4919;
+.global .align 1 .b8 _ZN21rti_internal_semantic12launch_indexE[14] = {114, 116, 76, 97, 117, 110, 99, 104, 73, 110, 100, 101, 120, 0};
+.global .align 1 .b8 _ZN21rti_internal_semantic10draw_colorE[1];
+.global .align 1 .b8 _ZN23rti_internal_annotation12launch_indexE[1];
+.global .align 1 .b8 _ZN23rti_internal_annotation10draw_colorE[1];
 
-.func  (.param .align 16 .b8 func_retval0[16]) _ZN34_INTERNAL_12_test_cpp1_ii_b01b390e11make_float4Effff(
-	.param .b32 _ZN34_INTERNAL_12_test_cpp1_ii_b01b390e11make_float4Effff_param_0,
-	.param .b32 _ZN34_INTERNAL_12_test_cpp1_ii_b01b390e11make_float4Effff_param_1,
-	.param .b32 _ZN34_INTERNAL_12_test_cpp1_ii_b01b390e11make_float4Effff_param_2,
-	.param .b32 _ZN34_INTERNAL_12_test_cpp1_ii_b01b390e11make_float4Effff_param_3
+.func  (.param .align 16 .b8 func_retval0[16]) _ZN34_INTERNAL_12_test_cpp1_ii_a1de53da11make_float4Effff(
+	.param .b32 _ZN34_INTERNAL_12_test_cpp1_ii_a1de53da11make_float4Effff_param_0,
+	.param .b32 _ZN34_INTERNAL_12_test_cpp1_ii_a1de53da11make_float4Effff_param_1,
+	.param .b32 _ZN34_INTERNAL_12_test_cpp1_ii_a1de53da11make_float4Effff_param_2,
+	.param .b32 _ZN34_INTERNAL_12_test_cpp1_ii_a1de53da11make_float4Effff_param_3
 )
 {
 	.local .align 16 .b8 	__local_depot0[16];
@@ -89,10 +89,10 @@ func_begin0:
 
 	mov.u64 	%rd1, __local_depot0;
 	cvta.local.u64 	%SP, %rd1;
-	ld.param.f32 	%f1, [_ZN34_INTERNAL_12_test_cpp1_ii_b01b390e11make_float4Effff_param_0];
-	ld.param.f32 	%f2, [_ZN34_INTERNAL_12_test_cpp1_ii_b01b390e11make_float4Effff_param_1];
-	ld.param.f32 	%f3, [_ZN34_INTERNAL_12_test_cpp1_ii_b01b390e11make_float4Effff_param_2];
-	ld.param.f32 	%f4, [_ZN34_INTERNAL_12_test_cpp1_ii_b01b390e11make_float4Effff_param_3];
+	ld.param.f32 	%f1, [_ZN34_INTERNAL_12_test_cpp1_ii_a1de53da11make_float4Effff_param_0];
+	ld.param.f32 	%f2, [_ZN34_INTERNAL_12_test_cpp1_ii_a1de53da11make_float4Effff_param_1];
+	ld.param.f32 	%f3, [_ZN34_INTERNAL_12_test_cpp1_ii_a1de53da11make_float4Effff_param_2];
+	ld.param.f32 	%f4, [_ZN34_INTERNAL_12_test_cpp1_ii_a1de53da11make_float4Effff_param_3];
 tmp0:
 func_exec_begin0:
 	.loc	5 252 13
@@ -117,8 +117,8 @@ tmp1:
 func_end0:
 }
 
-	// .globl	_Z13raygenerationv
-.visible .entry _Z13raygenerationv(
+	// .globl	_Z16draw_solid_colorv
+.visible .entry _Z16draw_solid_colorv(
 
 )
 {
@@ -132,18 +132,18 @@ func_end0:
 	.reg .b64 	%rd<40>;
 
 
-	.loc 1 33 1
+	.loc 1 39 1
 func_begin1:
 	.loc	1 0 0
 
-	.loc 1 33 1
+	.loc 1 39 1
 
 	mov.u64 	%rd39, __local_depot1;
 	cvta.local.u64 	%SP, %rd39;
 tmp2:
 func_exec_begin1:
-	.loc	1 35 2
-	mov.u64 	%rd1, theLaunchIndex;
+	.loc	1 41 2
+	mov.u64 	%rd1, launch_index;
 	cvta.global.u64 	%rd2, %rd1;
 	ld.u32 	%r1, [%rd2+4];
 	ld.u32 	%r2, [%rd2];
@@ -168,19 +168,19 @@ func_exec_begin1:
 	}// Callseq End 0
 	ld.u64 	%rd4, [%SP+96];
 	ld.u64 	%rd5, [%SP+104];
-	mov.u64 	%rd6, sysOutputBuffer;
+	mov.u64 	%rd6, result_buffer;
 	cvta.global.u64 	%rd7, %rd6;
 	mov.u64 	%rd8, %rd7;
 	st.u64 	[%SP+16], %rd8;
 	st.u64 	[%SP+40], %rd5;
 	st.u64 	[%SP+32], %rd4;
-	.loc	1 35 2
+	.loc	1 41 2
 	bra.uni	tmp3;
 tmp3:
-	.loc	2 399 17
+	.loc	3 399 17
 	ld.u64 	%rd9, [%SP+40];
 	ld.u64 	%rd10, [%SP+32];
-	.loc	2 399 19
+	.loc	3 399 19
 	// Callseq Start 1
 	{
 	.reg .b32 temp_param_reg;
@@ -205,7 +205,7 @@ tmp3:
 	st.u64 	[%SP+80], %rd13;
 	st.u64 	[%SP+72], %rd12;
 	st.u64 	[%SP+64], %rd11;
-	.loc	2 400 7
+	.loc	3 400 7
 	ld.u64 	%rd15, [%SP+16];
 	setp.ne.s64	%p1, %rd15, 0;
 	not.pred 	%p2, %p1;
@@ -240,7 +240,7 @@ tmp9:
 tmp10:
 	mov.b64 	%rd29, %rd25;
 tmp11:
-	.loc	2 400 37
+	.loc	3 400 37
 	bra.uni	tmp12;
 tmp12:
 	.loc	7 212 5
@@ -265,19 +265,19 @@ tmp17:
 	st.u8 	[%SP+8], %rs1;
 	mov.u64 	%rd31, %rd30;
 tmp18:
-	.loc	2 400 19
+	.loc	3 400 19
 	bra.uni	tmp19;
 tmp19:
-	.loc	2 414 105
+	.loc	3 414 105
 	mov.u64 	%rd32, %rd31;
-	mov.u64 	%rd33, sysColorBackground;
+	mov.u64 	%rd33, draw_color;
 	cvta.global.u64 	%rd34, %rd33;
 	mov.u64 	%rd35, %rd34;
 	st.u64 	[%SP+0], %rd35;
-	mov.f32 	%f1, 0f3F800000;
+	mov.f32 	%f1, 0f00000000;
 	mov.f32 	%f2, %f1;
 tmp20:
-	.loc	1 35 36
+	.loc	1 41 32
 	bra.uni	tmp21;
 tmp21:
 	.loc	8 1928 114
@@ -302,7 +302,7 @@ tmp21:
 	st.param.f32	[param3+0], %f2;
 	.param .align 16 .b8 retval0[16];
 	call.uni (retval0), 
-	_ZN34_INTERNAL_12_test_cpp1_ii_b01b390e11make_float4Effff, 
+	_ZN34_INTERNAL_12_test_cpp1_ii_a1de53da11make_float4Effff, 
 	(
 	param0, 
 	param1, 
@@ -317,12 +317,12 @@ tmp21:
 	//{
 	}// Callseq End 2
 tmp22:
-	.loc	1 35 36
+	.loc	1 41 32
 	st.f32 	[%rd32+12], %f9;
 	st.f32 	[%rd32+8], %f8;
 	st.f32 	[%rd32+4], %f7;
 	st.f32 	[%rd32], %f6;
-	.loc	1 36 1
+	.loc	1 42 1
 	ret;
 tmp23:
 func_end1:
@@ -502,11 +502,11 @@ func_end5:
 	.reg .b64 	%rd<11>;
 
 
-	.loc 2 404 1
+	.loc 3 404 1
 func_begin6:
-	.loc	2 0 0
+	.loc	3 0 0
 
-	.loc 2 404 1
+	.loc 3 404 1
 
 	mov.u64 	%rd10, __local_depot6;
 	cvta.local.u64 	%SP, %rd10;
@@ -515,12 +515,12 @@ func_begin6:
 	st.u64 	[%SP+8], %rd2;
 	st.u64 	[%SP+0], %rd1;
 func_exec_begin6:
-	.loc	2 404 77
+	.loc	3 404 77
 tmp32:
 	ld.u64 	%rd3, [%SP+0];
 	ld.u64 	%rd4, [%SP+8];
 	mov.u64 	%rd5, 0;
-	.loc	2 404 84
+	.loc	3 404 84
 	// Callseq Start 5
 	{
 	.reg .b32 temp_param_reg;
@@ -624,9 +624,9 @@ tmp35:
 func_end7:
 }
 
-	.file	1 "F:/Study/Optix_with_OpenGL/Optix_with_OpenGL/cuda/test.cu", 1537371969, 1694
-	.file	2 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optix_device.h", 1525850012, 116316
-	.file	3 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v9.1\\include\\vector_types.h", 1509767884, 12864
+	.file	1 "F:/Study/Optix_with_OpenGL/Optix_with_OpenGL/cuda/test.cu", 1537389603, 1906
+	.file	2 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v9.1\\include\\vector_types.h", 1509767884, 12864
+	.file	3 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optix_device.h", 1525850012, 116316
 	.file	4 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\internal\\optix_defines.h", 1525850012, 3130
 	.file	5 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v9.1\\include\\vector_functions.hpp", 1509767884, 10427
 	.file	6 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\internal\\../optix_sizet.h", 1525850012, 4611
@@ -634,7 +634,7 @@ func_end7:
 	.file	8 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optixu/optixu_math_namespace.h", 1525850012, 65252
 
 .section .debug_info {
- .b32 8013
+ .b32 7895
  .b8 2
  .b8 0
  .b32 .debug_abbrev
@@ -769,16 +769,104 @@ func_end7:
  .b8 0
  .b8 2
 
- .b8 115
+ .b8 108
+ .b8 97
+ .b8 117
+ .b8 110
+ .b8 99
+ .b8 104
+ .b8 95
+ .b8 105
+ .b8 110
+ .b8 100
+ .b8 101
+ .b8 120
+
+ .b8 0
+ .b32 195
+ .b32 1
+ .b32 34
+ .b8 9
+ .b8 3
+ .b64 launch_index
+ .b8 108
+ .b8 97
+ .b8 117
+ .b8 110
+ .b8 99
+ .b8 104
+ .b8 95
+ .b8 105
+ .b8 110
+ .b8 100
+ .b8 101
+ .b8 120
+
+ .b8 0
+ .b8 5
+ .b8 3
+
+ .b8 117
+ .b8 105
+ .b8 110
+ .b8 116
+ .b8 50
+
+ .b8 0
+ .b32 8
+ .b32 2
+ .b32 178
+ .b8 4
+
+ .b8 120
+
+ .b8 0
+ .b32 249
+ .b32 2
+ .b32 178
+ .b8 0
+
+ .b8 1
+ .b8 4
+
  .b8 121
+
+ .b8 0
+ .b32 249
+ .b32 2
+ .b32 178
+ .b8 4
+
+ .b8 1
+ .b8 0
+ .b8 5
+
+ .b8 117
+ .b8 110
  .b8 115
- .b8 79
- .b8 117
+ .b8 105
+ .b8 103
+ .b8 110
+ .b8 101
+ .b8 100
+ .b8 32
+ .b8 105
+ .b8 110
  .b8 116
- .b8 112
+
+ .b8 0
+ .b8 7
+ .b32 4
+ .b8 2
+
+ .b8 114
+ .b8 101
+ .b8 115
  .b8 117
+ .b8 108
  .b8 116
- .b8 66
+ .b8 95
+ .b8 98
  .b8 117
  .b8 102
  .b8 102
@@ -786,22 +874,20 @@ func_end7:
  .b8 114
 
  .b8 0
- .b32 201
+ .b32 320
  .b32 1
- .b32 26
+ .b32 35
  .b8 9
  .b8 3
- .b64 sysOutputBuffer
+ .b64 result_buffer
+ .b8 114
+ .b8 101
  .b8 115
- .b8 121
- .b8 115
- .b8 79
  .b8 117
+ .b8 108
  .b8 116
- .b8 112
- .b8 117
- .b8 116
- .b8 66
+ .b8 95
+ .b8 98
  .b8 117
  .b8 102
  .b8 102
@@ -810,7 +896,7 @@ func_end7:
 
  .b8 0
  .b8 5
- .b8 3
+ .b8 6
 
  .b8 95
  .b8 90
@@ -845,152 +931,42 @@ func_end7:
 
  .b8 0
  .b32 1
- .b32 2
+ .b32 3
  .b32 391
  .b8 2
 
- .b8 116
- .b8 104
- .b8 101
- .b8 76
+ .b8 100
+ .b8 114
  .b8 97
- .b8 117
- .b8 110
+ .b8 119
+ .b8 95
  .b8 99
- .b8 104
- .b8 73
- .b8 110
- .b8 100
- .b8 101
- .b8 120
-
- .b8 0
- .b32 299
- .b32 1
- .b32 28
- .b8 9
- .b8 3
- .b64 theLaunchIndex
- .b8 116
- .b8 104
- .b8 101
- .b8 76
- .b8 97
- .b8 117
- .b8 110
- .b8 99
- .b8 104
- .b8 73
- .b8 110
- .b8 100
- .b8 101
- .b8 120
-
- .b8 0
- .b8 5
- .b8 4
-
- .b8 117
- .b8 105
- .b8 110
- .b8 116
- .b8 50
-
- .b8 0
- .b32 8
- .b32 3
- .b32 178
- .b8 5
-
- .b8 120
-
- .b8 0
- .b32 353
- .b32 3
- .b32 178
- .b8 0
-
- .b8 1
- .b8 5
-
- .b8 121
-
- .b8 0
- .b32 353
- .b32 3
- .b32 178
- .b8 4
-
- .b8 1
- .b8 0
- .b8 6
-
- .b8 117
- .b8 110
- .b8 115
- .b8 105
- .b8 103
- .b8 110
- .b8 101
- .b8 100
- .b8 32
- .b8 105
- .b8 110
- .b8 116
-
- .b8 0
- .b8 7
- .b32 4
- .b8 2
-
- .b8 115
- .b8 121
- .b8 115
- .b8 67
  .b8 111
  .b8 108
  .b8 111
  .b8 114
- .b8 66
- .b8 97
- .b8 99
- .b8 107
- .b8 103
- .b8 114
- .b8 111
- .b8 117
- .b8 110
- .b8 100
 
  .b8 0
- .b32 434
+ .b32 410
  .b32 1
- .b32 30
+ .b32 37
  .b8 9
  .b8 3
- .b64 sysColorBackground
- .b8 115
- .b8 121
- .b8 115
- .b8 67
+ .b64 draw_color
+ .b8 100
+ .b8 114
+ .b8 97
+ .b8 119
+ .b8 95
+ .b8 99
  .b8 111
  .b8 108
  .b8 111
  .b8 114
- .b8 66
- .b8 97
- .b8 99
- .b8 107
- .b8 103
- .b8 114
- .b8 111
- .b8 117
- .b8 110
- .b8 100
 
  .b8 0
  .b8 5
- .b8 4
+ .b8 3
 
  .b8 102
  .b8 108
@@ -1001,43 +977,43 @@ func_end7:
 
  .b8 0
  .b32 12
- .b32 3
+ .b32 2
  .b32 274
- .b8 5
+ .b8 4
 
  .b8 120
 
  .b8 0
- .b32 506
- .b32 3
+ .b32 482
+ .b32 2
  .b32 276
  .b8 0
 
  .b8 1
- .b8 5
+ .b8 4
 
  .b8 121
 
  .b8 0
- .b32 506
- .b32 3
+ .b32 482
+ .b32 2
  .b32 276
  .b8 4
 
  .b8 1
- .b8 5
+ .b8 4
 
  .b8 122
 
  .b8 0
- .b32 506
- .b32 3
+ .b32 482
+ .b32 2
  .b32 276
  .b8 8
 
  .b8 1
  .b8 0
- .b8 6
+ .b8 5
 
  .b8 102
  .b8 108
@@ -1077,17 +1053,15 @@ func_end7:
  .b8 102
  .b8 111
  .b8 49
- .b8 52
- .b8 116
- .b8 104
- .b8 101
- .b8 76
+ .b8 50
+ .b8 108
  .b8 97
  .b8 117
  .b8 110
  .b8 99
  .b8 104
- .b8 73
+ .b8 95
+ .b8 105
  .b8 110
  .b8 100
  .b8 101
@@ -1095,12 +1069,12 @@ func_end7:
  .b8 69
 
  .b8 0
- .b32 630
+ .b32 602
  .b32 1
- .b32 28
+ .b32 34
  .b8 9
  .b8 3
- .b64 _ZN21rti_internal_typeinfo14theLaunchIndexE
+ .b64 _ZN21rti_internal_typeinfo12launch_indexE
  .b8 95
  .b8 90
  .b8 78
@@ -1128,17 +1102,15 @@ func_end7:
  .b8 102
  .b8 111
  .b8 49
- .b8 52
- .b8 116
- .b8 104
- .b8 101
- .b8 76
+ .b8 50
+ .b8 108
  .b8 97
  .b8 117
  .b8 110
  .b8 99
  .b8 104
- .b8 73
+ .b8 95
+ .b8 105
  .b8 110
  .b8 100
  .b8 101
@@ -1147,7 +1119,7 @@ func_end7:
 
  .b8 0
  .b8 5
- .b8 4
+ .b8 3
 
  .b8 95
  .b8 90
@@ -1195,7 +1167,7 @@ func_end7:
  .b32 8
  .b32 4
  .b32 48
- .b8 5
+ .b8 4
 
  .b8 107
  .b8 105
@@ -1203,13 +1175,13 @@ func_end7:
  .b8 100
 
  .b8 0
- .b32 353
+ .b32 249
  .b32 4
  .b32 49
  .b8 0
 
  .b8 1
- .b8 5
+ .b8 4
 
  .b8 115
  .b8 105
@@ -1217,7 +1189,7 @@ func_end7:
  .b8 101
 
  .b8 0
- .b32 353
+ .b32 249
  .b32 4
  .b32 50
  .b8 4
@@ -1253,34 +1225,26 @@ func_end7:
  .b8 102
  .b8 111
  .b8 49
- .b8 56
- .b8 115
- .b8 121
- .b8 115
- .b8 67
+ .b8 48
+ .b8 100
+ .b8 114
+ .b8 97
+ .b8 119
+ .b8 95
+ .b8 99
  .b8 111
  .b8 108
  .b8 111
  .b8 114
- .b8 66
- .b8 97
- .b8 99
- .b8 107
- .b8 103
- .b8 114
- .b8 111
- .b8 117
- .b8 110
- .b8 100
  .b8 69
 
  .b8 0
- .b32 630
+ .b32 602
  .b32 1
- .b32 30
+ .b32 37
  .b8 9
  .b8 3
- .b64 _ZN21rti_internal_typeinfo18sysColorBackgroundE
+ .b64 _ZN21rti_internal_typeinfo10draw_colorE
  .b8 95
  .b8 90
  .b8 78
@@ -1308,25 +1272,17 @@ func_end7:
  .b8 102
  .b8 111
  .b8 49
- .b8 56
- .b8 115
- .b8 121
- .b8 115
- .b8 67
+ .b8 48
+ .b8 100
+ .b8 114
+ .b8 97
+ .b8 119
+ .b8 95
+ .b8 99
  .b8 111
  .b8 108
  .b8 111
  .b8 114
- .b8 66
- .b8 97
- .b8 99
- .b8 107
- .b8 103
- .b8 114
- .b8 111
- .b8 117
- .b8 110
- .b8 100
  .b8 69
 
  .b8 0
@@ -1384,8 +1340,8 @@ func_end7:
  .b8 69
 
  .b8 0
- .b32 970
- .b32 2
+ .b32 926
+ .b32 3
  .b32 2272
  .b8 9
  .b8 3
@@ -1444,7 +1400,7 @@ func_end7:
  .b8 5
  .b8 7
 
- .b32 976
+ .b32 932
  .b8 12
  .b8 8
 
@@ -1511,8 +1467,8 @@ func_end7:
  .b8 69
 
  .b8 0
- .b32 1114
- .b32 2
+ .b32 1070
+ .b32 3
  .b32 2273
  .b8 9
  .b8 3
@@ -1575,8 +1531,8 @@ func_end7:
  .b8 5
  .b8 9
 
- .b32 1119
- .b8 6
+ .b32 1075
+ .b8 5
 
  .b8 117
  .b8 110
@@ -1657,8 +1613,8 @@ func_end7:
  .b8 69
 
  .b8 0
- .b32 1114
- .b32 2
+ .b32 1070
+ .b32 3
  .b32 2274
  .b8 9
  .b8 3
@@ -1776,8 +1732,8 @@ func_end7:
  .b8 69
 
  .b8 0
- .b32 1114
- .b32 2
+ .b32 1070
+ .b32 3
  .b32 2275
  .b8 9
  .b8 3
@@ -1895,8 +1851,8 @@ func_end7:
  .b8 69
 
  .b8 0
- .b32 1114
- .b32 2
+ .b32 1070
+ .b32 3
  .b32 2276
  .b8 9
  .b8 3
@@ -2014,8 +1970,8 @@ func_end7:
  .b8 69
 
  .b8 0
- .b32 1114
- .b32 2
+ .b32 1070
+ .b32 3
  .b32 2277
  .b8 9
  .b8 3
@@ -2133,8 +2089,8 @@ func_end7:
  .b8 69
 
  .b8 0
- .b32 1114
- .b32 2
+ .b32 1070
+ .b32 3
  .b32 2278
  .b8 9
  .b8 3
@@ -2252,8 +2208,8 @@ func_end7:
  .b8 69
 
  .b8 0
- .b32 1114
- .b32 2
+ .b32 1070
+ .b32 3
  .b32 2279
  .b8 9
  .b8 3
@@ -2371,8 +2327,8 @@ func_end7:
  .b8 69
 
  .b8 0
- .b32 1114
- .b32 2
+ .b32 1070
+ .b32 3
  .b32 2280
  .b8 9
  .b8 3
@@ -2490,8 +2446,8 @@ func_end7:
  .b8 69
 
  .b8 0
- .b32 1114
- .b32 2
+ .b32 1070
+ .b32 3
  .b32 2281
  .b8 9
  .b8 3
@@ -2609,8 +2565,8 @@ func_end7:
  .b8 69
 
  .b8 0
- .b32 1114
- .b32 2
+ .b32 1070
+ .b32 3
  .b32 2282
  .b8 9
  .b8 3
@@ -2725,8 +2681,8 @@ func_end7:
  .b8 69
 
  .b8 0
- .b32 2458
- .b32 2
+ .b32 2414
+ .b32 3
  .b32 2283
  .b8 9
  .b8 3
@@ -2786,7 +2742,7 @@ func_end7:
  .b8 5
  .b8 9
 
- .b32 353
+ .b32 249
  .b8 2
 
  .b8 95
@@ -2841,8 +2797,8 @@ func_end7:
  .b8 69
 
  .b8 0
- .b32 2458
- .b32 2
+ .b32 2414
+ .b32 3
  .b32 2284
  .b8 9
  .b8 3
@@ -2954,8 +2910,8 @@ func_end7:
  .b8 69
 
  .b8 0
- .b32 2458
- .b32 2
+ .b32 2414
+ .b32 3
  .b32 2285
  .b8 9
  .b8 3
@@ -3067,8 +3023,8 @@ func_end7:
  .b8 69
 
  .b8 0
- .b32 2458
- .b32 2
+ .b32 2414
+ .b32 3
  .b32 2286
  .b8 9
  .b8 3
@@ -3180,8 +3136,8 @@ func_end7:
  .b8 69
 
  .b8 0
- .b32 2458
- .b32 2
+ .b32 2414
+ .b32 3
  .b32 2287
  .b8 9
  .b8 3
@@ -3293,8 +3249,8 @@ func_end7:
  .b8 69
 
  .b8 0
- .b32 2458
- .b32 2
+ .b32 2414
+ .b32 3
  .b32 2288
  .b8 9
  .b8 3
@@ -3406,8 +3362,8 @@ func_end7:
  .b8 69
 
  .b8 0
- .b32 2458
- .b32 2
+ .b32 2414
+ .b32 3
  .b32 2289
  .b8 9
  .b8 3
@@ -3519,8 +3475,8 @@ func_end7:
  .b8 69
 
  .b8 0
- .b32 2458
- .b32 2
+ .b32 2414
+ .b32 3
  .b32 2290
  .b8 9
  .b8 3
@@ -3632,8 +3588,8 @@ func_end7:
  .b8 69
 
  .b8 0
- .b32 2458
- .b32 2
+ .b32 2414
+ .b32 3
  .b32 2291
  .b8 9
  .b8 3
@@ -3745,8 +3701,8 @@ func_end7:
  .b8 69
 
  .b8 0
- .b32 2458
- .b32 2
+ .b32 2414
+ .b32 3
  .b32 2292
  .b8 9
  .b8 3
@@ -3851,8 +3807,8 @@ func_end7:
  .b8 69
 
  .b8 0
- .b32 2458
- .b32 2
+ .b32 2414
+ .b32 3
  .b32 2293
  .b8 9
  .b8 3
@@ -3950,8 +3906,8 @@ func_end7:
  .b8 69
 
  .b8 0
- .b32 2458
- .b32 2
+ .b32 2414
+ .b32 3
  .b32 2294
  .b8 9
  .b8 3
@@ -4049,8 +4005,8 @@ func_end7:
  .b8 69
 
  .b8 0
- .b32 2458
- .b32 2
+ .b32 2414
+ .b32 3
  .b32 2295
  .b8 9
  .b8 3
@@ -4130,17 +4086,15 @@ func_end7:
  .b8 109
  .b8 101
  .b8 49
- .b8 52
- .b8 116
- .b8 104
- .b8 101
- .b8 76
+ .b8 50
+ .b8 108
  .b8 97
  .b8 117
  .b8 110
  .b8 99
  .b8 104
- .b8 73
+ .b8 95
+ .b8 105
  .b8 110
  .b8 100
  .b8 101
@@ -4148,12 +4102,12 @@ func_end7:
  .b8 69
 
  .b8 0
- .b32 4045
+ .b32 3997
  .b32 1
- .b32 28
+ .b32 34
  .b8 9
  .b8 3
- .b64 _ZN21rti_internal_typename14theLaunchIndexE
+ .b64 _ZN21rti_internal_typename12launch_indexE
  .b8 95
  .b8 90
  .b8 78
@@ -4181,17 +4135,15 @@ func_end7:
  .b8 109
  .b8 101
  .b8 49
- .b8 52
- .b8 116
- .b8 104
- .b8 101
- .b8 76
+ .b8 50
+ .b8 108
  .b8 97
  .b8 117
  .b8 110
  .b8 99
  .b8 104
- .b8 73
+ .b8 95
+ .b8 105
  .b8 110
  .b8 100
  .b8 101
@@ -4202,14 +4154,14 @@ func_end7:
  .b8 5
  .b8 10
 
- .b32 4057
+ .b32 4009
  .b8 11
 
- .b32 4068
+ .b32 4020
  .b8 5
 
  .b8 0
- .b8 6
+ .b8 5
 
  .b8 99
  .b8 104
@@ -4257,34 +4209,26 @@ func_end7:
  .b8 109
  .b8 101
  .b8 49
- .b8 56
- .b8 115
- .b8 121
- .b8 115
- .b8 67
+ .b8 48
+ .b8 100
+ .b8 114
+ .b8 97
+ .b8 119
+ .b8 95
+ .b8 99
  .b8 111
  .b8 108
  .b8 111
  .b8 114
- .b8 66
- .b8 97
- .b8 99
- .b8 107
- .b8 103
- .b8 114
- .b8 111
- .b8 117
- .b8 110
- .b8 100
  .b8 69
 
  .b8 0
- .b32 4198
+ .b32 4134
  .b32 1
- .b32 30
+ .b32 37
  .b8 9
  .b8 3
- .b64 _ZN21rti_internal_typename18sysColorBackgroundE
+ .b64 _ZN21rti_internal_typename10draw_colorE
  .b8 95
  .b8 90
  .b8 78
@@ -4312,35 +4256,27 @@ func_end7:
  .b8 109
  .b8 101
  .b8 49
- .b8 56
- .b8 115
- .b8 121
- .b8 115
- .b8 67
+ .b8 48
+ .b8 100
+ .b8 114
+ .b8 97
+ .b8 119
+ .b8 95
+ .b8 99
  .b8 111
  .b8 108
  .b8 111
  .b8 114
- .b8 66
- .b8 97
- .b8 99
- .b8 107
- .b8 103
- .b8 114
- .b8 111
- .b8 117
- .b8 110
- .b8 100
  .b8 69
 
  .b8 0
  .b8 5
  .b8 10
 
- .b32 4057
+ .b32 4009
  .b8 11
 
- .b32 4068
+ .b32 4020
  .b8 6
 
  .b8 0
@@ -4373,17 +4309,15 @@ func_end7:
  .b8 117
  .b8 109
  .b8 49
- .b8 52
- .b8 116
- .b8 104
- .b8 101
- .b8 76
+ .b8 50
+ .b8 108
  .b8 97
  .b8 117
  .b8 110
  .b8 99
  .b8 104
- .b8 73
+ .b8 95
+ .b8 105
  .b8 110
  .b8 100
  .b8 101
@@ -4391,12 +4325,12 @@ func_end7:
  .b8 69
 
  .b8 0
- .b32 4322
+ .b32 4254
  .b32 1
- .b32 28
+ .b32 34
  .b8 9
  .b8 3
- .b64 _ZN21rti_internal_typeenum14theLaunchIndexE
+ .b64 _ZN21rti_internal_typeenum12launch_indexE
  .b8 95
  .b8 90
  .b8 78
@@ -4424,17 +4358,15 @@ func_end7:
  .b8 117
  .b8 109
  .b8 49
- .b8 52
- .b8 116
- .b8 104
- .b8 101
- .b8 76
+ .b8 50
+ .b8 108
  .b8 97
  .b8 117
  .b8 110
  .b8 99
  .b8 104
- .b8 73
+ .b8 95
+ .b8 105
  .b8 110
  .b8 100
  .b8 101
@@ -4443,7 +4375,7 @@ func_end7:
 
  .b8 0
  .b8 5
- .b8 6
+ .b8 5
 
  .b8 105
  .b8 110
@@ -4481,34 +4413,26 @@ func_end7:
  .b8 117
  .b8 109
  .b8 49
- .b8 56
- .b8 115
- .b8 121
- .b8 115
- .b8 67
+ .b8 48
+ .b8 100
+ .b8 114
+ .b8 97
+ .b8 119
+ .b8 95
+ .b8 99
  .b8 111
  .b8 108
  .b8 111
  .b8 114
- .b8 66
- .b8 97
- .b8 99
- .b8 107
- .b8 103
- .b8 114
- .b8 111
- .b8 117
- .b8 110
- .b8 100
  .b8 69
 
  .b8 0
- .b32 4322
+ .b32 4254
  .b32 1
- .b32 30
+ .b32 37
  .b8 9
  .b8 3
- .b64 _ZN21rti_internal_typeenum18sysColorBackgroundE
+ .b64 _ZN21rti_internal_typeenum10draw_colorE
  .b8 95
  .b8 90
  .b8 78
@@ -4536,25 +4460,17 @@ func_end7:
  .b8 117
  .b8 109
  .b8 49
- .b8 56
- .b8 115
- .b8 121
- .b8 115
- .b8 67
+ .b8 48
+ .b8 100
+ .b8 114
+ .b8 97
+ .b8 119
+ .b8 95
+ .b8 99
  .b8 111
  .b8 108
  .b8 111
  .b8 114
- .b8 66
- .b8 97
- .b8 99
- .b8 107
- .b8 103
- .b8 114
- .b8 111
- .b8 117
- .b8 110
- .b8 100
  .b8 69
 
  .b8 0
@@ -4588,17 +4504,15 @@ func_end7:
  .b8 105
  .b8 99
  .b8 49
- .b8 52
- .b8 116
- .b8 104
- .b8 101
- .b8 76
+ .b8 50
+ .b8 108
  .b8 97
  .b8 117
  .b8 110
  .b8 99
  .b8 104
- .b8 73
+ .b8 95
+ .b8 105
  .b8 110
  .b8 100
  .b8 101
@@ -4606,12 +4520,12 @@ func_end7:
  .b8 69
 
  .b8 0
- .b32 4564
+ .b32 4476
  .b32 1
- .b32 28
+ .b32 34
  .b8 9
  .b8 3
- .b64 _ZN21rti_internal_semantic14theLaunchIndexE
+ .b64 _ZN21rti_internal_semantic12launch_indexE
  .b8 95
  .b8 90
  .b8 78
@@ -4639,17 +4553,15 @@ func_end7:
  .b8 105
  .b8 99
  .b8 49
- .b8 52
- .b8 116
- .b8 104
- .b8 101
- .b8 76
+ .b8 50
+ .b8 108
  .b8 97
  .b8 117
  .b8 110
  .b8 99
  .b8 104
- .b8 73
+ .b8 95
+ .b8 105
  .b8 110
  .b8 100
  .b8 101
@@ -4660,10 +4572,10 @@ func_end7:
  .b8 5
  .b8 10
 
- .b32 4057
+ .b32 4009
  .b8 11
 
- .b32 4068
+ .b32 4020
  .b8 13
 
  .b8 0
@@ -4696,34 +4608,26 @@ func_end7:
  .b8 105
  .b8 99
  .b8 49
- .b8 56
- .b8 115
- .b8 121
- .b8 115
- .b8 67
+ .b8 48
+ .b8 100
+ .b8 114
+ .b8 97
+ .b8 119
+ .b8 95
+ .b8 99
  .b8 111
  .b8 108
  .b8 111
  .b8 114
- .b8 66
- .b8 97
- .b8 99
- .b8 107
- .b8 103
- .b8 114
- .b8 111
- .b8 117
- .b8 110
- .b8 100
  .b8 69
 
  .b8 0
- .b32 4696
+ .b32 4592
  .b32 1
- .b32 30
+ .b32 37
  .b8 9
  .b8 3
- .b64 _ZN21rti_internal_semantic18sysColorBackgroundE
+ .b64 _ZN21rti_internal_semantic10draw_colorE
  .b8 95
  .b8 90
  .b8 78
@@ -4751,35 +4655,27 @@ func_end7:
  .b8 105
  .b8 99
  .b8 49
- .b8 56
- .b8 115
- .b8 121
- .b8 115
- .b8 67
+ .b8 48
+ .b8 100
+ .b8 114
+ .b8 97
+ .b8 119
+ .b8 95
+ .b8 99
  .b8 111
  .b8 108
  .b8 111
  .b8 114
- .b8 66
- .b8 97
- .b8 99
- .b8 107
- .b8 103
- .b8 114
- .b8 111
- .b8 117
- .b8 110
- .b8 100
  .b8 69
 
  .b8 0
  .b8 5
  .b8 10
 
- .b32 4057
+ .b32 4009
  .b8 11
 
- .b32 4068
+ .b32 4020
  .b8 0
 
  .b8 0
@@ -4814,17 +4710,15 @@ func_end7:
  .b8 111
  .b8 110
  .b8 49
- .b8 52
- .b8 116
- .b8 104
- .b8 101
- .b8 76
+ .b8 50
+ .b8 108
  .b8 97
  .b8 117
  .b8 110
  .b8 99
  .b8 104
- .b8 73
+ .b8 95
+ .b8 105
  .b8 110
  .b8 100
  .b8 101
@@ -4832,12 +4726,12 @@ func_end7:
  .b8 69
 
  .b8 0
- .b32 4696
+ .b32 4592
  .b32 1
- .b32 28
+ .b32 34
  .b8 9
  .b8 3
- .b64 _ZN23rti_internal_annotation14theLaunchIndexE
+ .b64 _ZN23rti_internal_annotation12launch_indexE
  .b8 95
  .b8 90
  .b8 78
@@ -4867,17 +4761,15 @@ func_end7:
  .b8 111
  .b8 110
  .b8 49
- .b8 52
- .b8 116
- .b8 104
- .b8 101
- .b8 76
+ .b8 50
+ .b8 108
  .b8 97
  .b8 117
  .b8 110
  .b8 99
  .b8 104
- .b8 73
+ .b8 95
+ .b8 105
  .b8 110
  .b8 100
  .b8 101
@@ -4917,34 +4809,26 @@ func_end7:
  .b8 111
  .b8 110
  .b8 49
- .b8 56
- .b8 115
- .b8 121
- .b8 115
- .b8 67
+ .b8 48
+ .b8 100
+ .b8 114
+ .b8 97
+ .b8 119
+ .b8 95
+ .b8 99
  .b8 111
  .b8 108
  .b8 111
  .b8 114
- .b8 66
- .b8 97
- .b8 99
- .b8 107
- .b8 103
- .b8 114
- .b8 111
- .b8 117
- .b8 110
- .b8 100
  .b8 69
 
  .b8 0
- .b32 4696
+ .b32 4592
  .b32 1
- .b32 30
+ .b32 37
  .b8 9
  .b8 3
- .b64 _ZN23rti_internal_annotation18sysColorBackgroundE
+ .b64 _ZN23rti_internal_annotation10draw_colorE
  .b8 95
  .b8 90
  .b8 78
@@ -4974,25 +4858,17 @@ func_end7:
  .b8 111
  .b8 110
  .b8 49
- .b8 56
- .b8 115
- .b8 121
- .b8 115
- .b8 67
+ .b8 48
+ .b8 100
+ .b8 114
+ .b8 97
+ .b8 119
+ .b8 95
+ .b8 99
  .b8 111
  .b8 108
  .b8 111
  .b8 114
- .b8 66
- .b8 97
- .b8 99
- .b8 107
- .b8 103
- .b8 114
- .b8 111
- .b8 117
- .b8 110
- .b8 100
  .b8 69
 
  .b8 0
@@ -5030,14 +4906,14 @@ func_end7:
  .b8 105
  .b8 105
  .b8 95
- .b8 98
- .b8 48
+ .b8 97
  .b8 49
- .b8 98
- .b8 51
- .b8 57
- .b8 48
+ .b8 100
  .b8 101
+ .b8 53
+ .b8 51
+ .b8 100
+ .b8 97
  .b8 49
  .b8 49
  .b8 109
@@ -5089,14 +4965,14 @@ func_end7:
  .b8 105
  .b8 105
  .b8 95
- .b8 98
- .b8 48
+ .b8 97
  .b8 49
- .b8 98
- .b8 51
- .b8 57
- .b8 48
+ .b8 100
  .b8 101
+ .b8 53
+ .b8 51
+ .b8 100
+ .b8 97
  .b8 49
  .b8 49
  .b8 109
@@ -5119,7 +4995,7 @@ func_end7:
  .b8 0
  .b32 5
  .b32 250
- .b32 5230
+ .b32 5106
  .b64 func_begin0
  .b64 func_end0
  .b8 1
@@ -5131,7 +5007,7 @@ func_end7:
  .b8 0
  .b32 5
  .b32 250
- .b32 506
+ .b32 482
  .b8 5
  .b8 144
  .b8 177
@@ -5146,7 +5022,7 @@ func_end7:
  .b8 0
  .b32 5
  .b32 250
- .b32 506
+ .b32 482
  .b8 5
  .b8 144
  .b8 178
@@ -5161,7 +5037,7 @@ func_end7:
  .b8 0
  .b32 5
  .b32 250
- .b32 506
+ .b32 482
  .b8 5
  .b8 144
  .b8 179
@@ -5176,7 +5052,7 @@ func_end7:
  .b8 0
  .b32 5
  .b32 250
- .b32 506
+ .b32 482
  .b8 5
  .b8 144
  .b8 180
@@ -5195,7 +5071,7 @@ func_end7:
  .b8 0
  .b32 5
  .b32 252
- .b32 5230
+ .b32 5106
  .b8 11
  .b8 3
  .b64 __local_depot0
@@ -5205,7 +5081,7 @@ func_end7:
  .b8 6
  .b8 0
  .b8 0
- .b8 4
+ .b8 3
 
  .b8 102
  .b8 108
@@ -5216,48 +5092,48 @@ func_end7:
 
  .b8 0
  .b32 16
- .b32 3
+ .b32 2
  .b32 279
- .b8 5
+ .b8 4
 
  .b8 120
 
  .b8 0
- .b32 506
- .b32 3
+ .b32 482
+ .b32 2
  .b32 281
  .b8 0
 
  .b8 1
- .b8 5
+ .b8 4
 
  .b8 121
 
  .b8 0
- .b32 506
- .b32 3
+ .b32 482
+ .b32 2
  .b32 281
  .b8 4
 
  .b8 1
- .b8 5
+ .b8 4
 
  .b8 122
 
  .b8 0
- .b32 506
- .b32 3
+ .b32 482
+ .b32 2
  .b32 281
  .b8 8
 
  .b8 1
- .b8 5
+ .b8 4
 
  .b8 119
 
  .b8 0
- .b32 506
- .b32 3
+ .b32 482
+ .b32 2
  .b32 281
  .b8 12
 
@@ -5268,46 +5144,52 @@ func_end7:
  .b8 95
  .b8 90
  .b8 49
- .b8 51
+ .b8 54
+ .b8 100
  .b8 114
  .b8 97
- .b8 121
- .b8 103
- .b8 101
- .b8 110
- .b8 101
- .b8 114
- .b8 97
- .b8 116
- .b8 105
+ .b8 119
+ .b8 95
+ .b8 115
  .b8 111
- .b8 110
+ .b8 108
+ .b8 105
+ .b8 100
+ .b8 95
+ .b8 99
+ .b8 111
+ .b8 108
+ .b8 111
+ .b8 114
  .b8 118
 
  .b8 0
  .b8 95
  .b8 90
  .b8 49
- .b8 51
+ .b8 54
+ .b8 100
  .b8 114
  .b8 97
- .b8 121
- .b8 103
- .b8 101
- .b8 110
- .b8 101
- .b8 114
- .b8 97
- .b8 116
- .b8 105
+ .b8 119
+ .b8 95
+ .b8 115
  .b8 111
- .b8 110
+ .b8 108
+ .b8 105
+ .b8 100
+ .b8 95
+ .b8 99
+ .b8 111
+ .b8 108
+ .b8 111
+ .b8 114
  .b8 118
 
  .b8 0
  .b32 1
- .b32 33
- .b32 976
+ .b32 39
+ .b32 932
  .b8 1
  .b64 func_begin1
  .b64 func_end1
@@ -5325,7 +5207,7 @@ func_end7:
  .b8 48
 
  .b8 0
- .b32 7837
+ .b32 7719
  .b8 11
  .b8 3
  .b64 __local_depot1
@@ -5335,14 +5217,14 @@ func_end7:
  .b8 6
  .b8 19
 
- .b32 6312
+ .b32 6194
  .b64 tmp3
  .b64 tmp20
  .b32 1
- .b32 35
+ .b32 41
  .b8 20
 
- .b32 6416
+ .b32 6298
  .b8 11
  .b8 3
  .b64 __local_depot1
@@ -5352,7 +5234,7 @@ func_end7:
  .b8 6
  .b8 20
 
- .b32 6426
+ .b32 6308
  .b8 11
  .b8 3
  .b64 __local_depot1
@@ -5362,7 +5244,7 @@ func_end7:
  .b8 6
  .b8 21
 
- .b32 6442
+ .b32 6324
  .b8 11
  .b8 3
  .b64 __local_depot1
@@ -5372,7 +5254,7 @@ func_end7:
  .b8 6
  .b8 21
 
- .b32 6452
+ .b32 6334
  .b8 11
  .b8 3
  .b64 __local_depot1
@@ -5382,7 +5264,7 @@ func_end7:
  .b8 6
  .b8 21
 
- .b32 6467
+ .b32 6349
  .b8 5
  .b8 144
  .b8 180
@@ -5392,14 +5274,14 @@ func_end7:
  .b8 2
  .b8 19
 
- .b32 7237
+ .b32 7119
  .b64 tmp12
  .b64 tmp18
- .b32 2
+ .b32 3
  .b32 400
  .b8 20
 
- .b32 7391
+ .b32 7273
  .b8 7
  .b8 144
  .b8 183
@@ -5411,7 +5293,7 @@ func_end7:
  .b8 2
  .b8 20
 
- .b32 7411
+ .b32 7293
  .b8 5
  .b8 144
  .b8 181
@@ -5421,7 +5303,7 @@ func_end7:
  .b8 2
  .b8 20
 
- .b32 7428
+ .b32 7310
  .b8 5
  .b8 144
  .b8 182
@@ -5431,7 +5313,7 @@ func_end7:
  .b8 2
  .b8 20
 
- .b32 7454
+ .b32 7336
  .b8 7
  .b8 144
  .b8 182
@@ -5443,7 +5325,7 @@ func_end7:
  .b8 2
  .b8 20
 
- .b32 7473
+ .b32 7355
  .b8 7
  .b8 144
  .b8 183
@@ -5455,7 +5337,7 @@ func_end7:
  .b8 2
  .b8 20
 
- .b32 7492
+ .b32 7374
  .b8 7
  .b8 144
  .b8 184
@@ -5467,7 +5349,7 @@ func_end7:
  .b8 2
  .b8 20
 
- .b32 7511
+ .b32 7393
  .b8 7
  .b8 144
  .b8 185
@@ -5479,7 +5361,7 @@ func_end7:
  .b8 2
  .b8 21
 
- .b32 7531
+ .b32 7413
  .b8 7
  .b8 144
  .b8 184
@@ -5491,7 +5373,7 @@ func_end7:
  .b8 2
  .b8 21
 
- .b32 7547
+ .b32 7429
  .b8 7
  .b8 144
  .b8 185
@@ -5503,7 +5385,7 @@ func_end7:
  .b8 2
  .b8 21
 
- .b32 7563
+ .b32 7445
  .b8 7
  .b8 144
  .b8 176
@@ -5515,7 +5397,7 @@ func_end7:
  .b8 2
  .b8 21
 
- .b32 7579
+ .b32 7461
  .b8 7
  .b8 144
  .b8 177
@@ -5527,7 +5409,7 @@ func_end7:
  .b8 2
  .b8 21
 
- .b32 7595
+ .b32 7477
  .b8 7
  .b8 144
  .b8 182
@@ -5540,14 +5422,14 @@ func_end7:
  .b8 0
  .b8 19
 
- .b32 6770
+ .b32 6652
  .b64 tmp19
  .b64 tmp20
- .b32 2
+ .b32 3
  .b32 400
  .b8 20
 
- .b32 6908
+ .b32 6790
  .b8 11
  .b8 3
  .b64 __local_depot1
@@ -5557,7 +5439,7 @@ func_end7:
  .b8 6
  .b8 20
 
- .b32 6913
+ .b32 6795
  .b8 7
  .b8 144
  .b8 177
@@ -5571,14 +5453,14 @@ func_end7:
  .b8 0
  .b8 19
 
- .b32 7614
+ .b32 7496
  .b64 tmp21
  .b64 tmp22
  .b32 1
- .b32 35
+ .b32 41
  .b8 20
 
- .b32 7696
+ .b32 7578
  .b8 11
  .b8 3
  .b64 __local_depot1
@@ -5588,7 +5470,7 @@ func_end7:
  .b8 6
  .b8 20
 
- .b32 7712
+ .b32 7594
  .b8 5
  .b8 144
  .b8 178
@@ -5659,7 +5541,7 @@ func_end7:
  .b8 0
  .b32 6
  .b32 56
- .b32 976
+ .b32 932
  .b8 1
  .b64 func_begin2
  .b64 func_end2
@@ -5673,7 +5555,7 @@ func_end7:
  .b8 115
 
  .b8 0
- .b32 7994
+ .b32 7876
  .b8 6
  .b8 144
  .b8 177
@@ -5689,7 +5571,7 @@ func_end7:
  .b8 0
  .b32 6
  .b32 56
- .b32 299
+ .b32 195
  .b8 11
  .b8 3
  .b64 __local_depot2
@@ -5758,7 +5640,7 @@ func_end7:
  .b8 0
  .b32 6
  .b32 56
- .b32 976
+ .b32 932
  .b8 1
  .b64 func_begin3
  .b64 func_end3
@@ -5772,7 +5654,7 @@ func_end7:
  .b8 115
 
  .b8 0
- .b32 7994
+ .b32 7876
  .b8 6
  .b8 144
  .b8 177
@@ -5783,7 +5665,7 @@ func_end7:
  .b8 2
  .b8 23
 
- .b32 299
+ .b32 195
  .b8 11
  .b8 3
  .b64 __local_depot3
@@ -5842,7 +5724,7 @@ func_end7:
  .b8 0
  .b32 6
  .b32 73
- .b32 976
+ .b32 932
  .b8 1
  .b64 func_begin4
  .b64 func_end4
@@ -5856,7 +5738,7 @@ func_end7:
  .b8 115
 
  .b8 0
- .b32 8005
+ .b32 7887
  .b8 11
  .b8 3
  .b64 __local_depot4
@@ -5915,7 +5797,7 @@ func_end7:
  .b8 0
  .b32 6
  .b32 73
- .b32 976
+ .b32 932
  .b8 1
  .b64 func_begin5
  .b64 func_end5
@@ -5929,7 +5811,7 @@ func_end7:
  .b8 115
 
  .b8 0
- .b32 8005
+ .b32 7887
  .b8 6
  .b8 144
  .b8 177
@@ -6033,9 +5915,9 @@ func_end7:
  .b8 69
 
  .b8 0
- .b32 2
+ .b32 3
  .b32 398
- .b32 6479
+ .b32 6361
  .b8 1
  .b8 25
 
@@ -6045,15 +5927,15 @@ func_end7:
  .b8 115
 
  .b8 0
- .b32 7967
+ .b32 7849
  .b8 26
 
  .b8 105
 
  .b8 0
- .b32 2
+ .b32 3
  .b32 398
- .b32 7837
+ .b32 7719
  .b8 27
 
  .b8 28
@@ -6064,15 +5946,15 @@ func_end7:
  .b8 49
 
  .b8 0
- .b32 7883
+ .b32 7765
  .b8 29
 
  .b8 99
 
  .b8 0
- .b32 2
+ .b32 3
  .b32 399
- .b32 6657
+ .b32 6539
  .b8 28
 
  .b8 95
@@ -6081,12 +5963,12 @@ func_end7:
  .b8 50
 
  .b8 0
- .b32 4322
+ .b32 4254
  .b8 0
  .b8 0
  .b8 7
 
- .b32 5230
+ .b32 5106
  .b8 12
  .b8 17
 
@@ -6202,9 +6084,9 @@ func_end7:
  .b8 69
 
  .b8 0
- .b32 2
+ .b32 3
  .b32 404
- .b32 6657
+ .b32 6539
  .b8 1
  .b64 func_begin6
  .b64 func_end6
@@ -6216,9 +6098,9 @@ func_end7:
  .b8 48
 
  .b8 0
- .b32 2
+ .b32 3
  .b32 404
- .b32 7729
+ .b32 7611
  .b8 11
  .b8 3
  .b64 __local_depot6
@@ -6227,7 +6109,7 @@ func_end7:
 
  .b8 6
  .b8 0
- .b8 4
+ .b8 3
 
  .b8 95
  .b8 90
@@ -6252,45 +6134,45 @@ func_end7:
  .b32 32
  .b32 6
  .b32 71
- .b8 5
+ .b8 4
 
  .b8 120
 
  .b8 0
- .b32 6758
+ .b32 6640
  .b32 6
  .b32 77
  .b8 0
 
  .b8 1
- .b8 5
+ .b8 4
 
  .b8 121
 
  .b8 0
- .b32 6758
+ .b32 6640
  .b32 6
  .b32 77
  .b8 8
 
  .b8 1
- .b8 5
+ .b8 4
 
  .b8 122
 
  .b8 0
- .b32 6758
+ .b32 6640
  .b32 6
  .b32 77
  .b8 16
 
  .b8 1
- .b8 5
+ .b8 4
 
  .b8 119
 
  .b8 0
- .b32 6758
+ .b32 6640
  .b32 6
  .b32 77
  .b8 24
@@ -6299,7 +6181,7 @@ func_end7:
  .b8 0
  .b8 30
 
- .b32 1119
+ .b32 1075
  .b8 115
  .b8 105
  .b8 122
@@ -6436,21 +6318,21 @@ func_end7:
  .b8 95
 
  .b8 0
- .b32 2
+ .b32 3
  .b32 414
- .b32 970
+ .b32 926
  .b8 1
  .b8 31
 
- .b32 7883
+ .b32 7765
  .b8 26
 
  .b8 118
 
  .b8 0
- .b32 2
+ .b32 3
  .b32 414
- .b32 970
+ .b32 926
  .b8 0
  .b8 17
 
@@ -6516,7 +6398,7 @@ func_end7:
  .b8 0
  .b32 6
  .b32 93
- .b32 6657
+ .b32 6539
  .b8 1
  .b64 func_begin7
  .b64 func_end7
@@ -6529,7 +6411,7 @@ func_end7:
  .b8 0
  .b32 6
  .b32 93
- .b32 6758
+ .b32 6640
  .b8 6
  .b8 144
  .b8 177
@@ -6545,7 +6427,7 @@ func_end7:
  .b8 0
  .b32 6
  .b32 93
- .b32 6758
+ .b32 6640
  .b8 6
  .b8 144
  .b8 178
@@ -6561,7 +6443,7 @@ func_end7:
  .b8 0
  .b32 6
  .b32 93
- .b32 6758
+ .b32 6640
  .b8 6
  .b8 144
  .b8 179
@@ -6577,7 +6459,7 @@ func_end7:
  .b8 0
  .b32 6
  .b32 93
- .b32 6758
+ .b32 6640
  .b8 6
  .b8 144
  .b8 180
@@ -6599,7 +6481,7 @@ func_end7:
  .b8 0
  .b32 6
  .b32 94
- .b32 6657
+ .b32 6539
  .b8 11
  .b8 3
  .b64 __local_depot7
@@ -6679,7 +6561,7 @@ func_end7:
  .b8 0
  .b32 7
  .b32 48
- .b32 976
+ .b32 932
  .b8 24
 
  .b8 95
@@ -6713,14 +6595,14 @@ func_end7:
  .b8 105
  .b8 105
  .b8 95
- .b8 98
- .b8 48
+ .b8 97
  .b8 49
- .b8 98
- .b8 51
- .b8 57
- .b8 48
+ .b8 100
  .b8 101
+ .b8 53
+ .b8 51
+ .b8 100
+ .b8 97
  .b8 53
  .b8 111
  .b8 112
@@ -6784,14 +6666,14 @@ func_end7:
  .b8 105
  .b8 105
  .b8 95
- .b8 98
- .b8 48
+ .b8 97
  .b8 49
- .b8 98
- .b8 51
- .b8 57
- .b8 48
+ .b8 100
  .b8 101
+ .b8 53
+ .b8 51
+ .b8 100
+ .b8 97
  .b8 53
  .b8 111
  .b8 112
@@ -6826,7 +6708,7 @@ func_end7:
  .b8 0
  .b32 7
  .b32 208
- .b32 970
+ .b32 926
  .b8 1
  .b8 26
 
@@ -6840,7 +6722,7 @@ func_end7:
  .b8 0
  .b32 7
  .b32 208
- .b32 970
+ .b32 926
  .b8 26
 
  .b8 100
@@ -6850,7 +6732,7 @@ func_end7:
  .b8 0
  .b32 7
  .b32 208
- .b32 353
+ .b32 249
  .b8 26
 
  .b8 101
@@ -6869,7 +6751,7 @@ func_end7:
  .b8 0
  .b32 7
  .b32 208
- .b32 353
+ .b32 249
  .b8 26
 
  .b8 105
@@ -6881,7 +6763,7 @@ func_end7:
  .b8 0
  .b32 7
  .b32 209
- .b32 6758
+ .b32 6640
  .b8 26
 
  .b8 105
@@ -6893,7 +6775,7 @@ func_end7:
  .b8 0
  .b32 7
  .b32 209
- .b32 6758
+ .b32 6640
  .b8 26
 
  .b8 105
@@ -6905,7 +6787,7 @@ func_end7:
  .b8 0
  .b32 7
  .b32 209
- .b32 6758
+ .b32 6640
  .b8 26
 
  .b8 105
@@ -6917,7 +6799,7 @@ func_end7:
  .b8 0
  .b32 7
  .b32 209
- .b32 6758
+ .b32 6640
  .b8 27
 
  .b8 29
@@ -6928,7 +6810,7 @@ func_end7:
  .b8 0
  .b32 7
  .b32 211
- .b32 7937
+ .b32 7819
  .b8 29
 
  .b8 105
@@ -6937,7 +6819,7 @@ func_end7:
  .b8 0
  .b32 7
  .b32 211
- .b32 7937
+ .b32 7819
  .b8 29
 
  .b8 105
@@ -6946,7 +6828,7 @@ func_end7:
  .b8 0
  .b32 7
  .b32 211
- .b32 7937
+ .b32 7819
  .b8 29
 
  .b8 105
@@ -6955,7 +6837,7 @@ func_end7:
  .b8 0
  .b32 7
  .b32 211
- .b32 7937
+ .b32 7819
  .b8 29
 
  .b8 116
@@ -6965,7 +6847,7 @@ func_end7:
  .b8 0
  .b32 7
  .b32 216
- .b32 970
+ .b32 926
  .b8 0
  .b8 0
  .b8 24
@@ -7042,7 +6924,7 @@ func_end7:
  .b8 0
  .b32 8
  .b32 1928
- .b32 5230
+ .b32 5106
  .b8 1
  .b8 26
 
@@ -7052,7 +6934,7 @@ func_end7:
  .b8 0
  .b32 8
  .b32 1928
- .b32 7978
+ .b32 7860
  .b8 26
 
  .b8 118
@@ -7061,9 +6943,9 @@ func_end7:
  .b8 0
  .b32 8
  .b32 1928
- .b32 7989
+ .b32 7871
  .b8 0
- .b8 4
+ .b8 3
 
  .b8 95
  .b8 90
@@ -7088,23 +6970,23 @@ func_end7:
  .b32 16
  .b32 6
  .b32 52
- .b8 5
+ .b8 4
 
  .b8 120
 
  .b8 0
- .b32 6758
+ .b32 6640
  .b32 6
  .b32 58
  .b8 0
 
  .b8 1
- .b8 5
+ .b8 4
 
  .b8 121
 
  .b8 0
- .b32 6758
+ .b32 6640
  .b32 6
  .b32 58
  .b8 8
@@ -7113,7 +6995,7 @@ func_end7:
  .b8 0
  .b8 30
 
- .b32 7729
+ .b32 7611
  .b8 95
  .b8 90
  .b8 78
@@ -7153,7 +7035,7 @@ func_end7:
  .b8 0
  .b8 30
 
- .b32 7796
+ .b32 7678
  .b8 95
  .b8 90
  .b8 78
@@ -7196,7 +7078,7 @@ func_end7:
  .b8 69
 
  .b8 0
- .b8 3
+ .b8 6
 
  .b8 95
  .b8 90
@@ -7241,11 +7123,11 @@ func_end7:
 
  .b8 0
  .b32 1
- .b32 2
+ .b32 3
  .b32 411
  .b8 30
 
- .b32 6758
+ .b32 6640
  .b8 95
  .b8 90
  .b8 78
@@ -7274,34 +7156,34 @@ func_end7:
  .b8 0
  .b8 33
 
- .b32 7972
+ .b32 7854
  .b8 7
 
- .b32 201
+ .b32 320
  .b8 12
  .b8 7
 
- .b32 7984
+ .b32 7866
  .b8 12
  .b8 33
 
- .b32 434
+ .b32 410
  .b8 33
 
- .b32 506
+ .b32 482
  .b8 33
 
- .b32 7999
+ .b32 7881
  .b8 7
 
- .b32 7729
+ .b32 7611
  .b8 12
  .b8 33
 
- .b32 8010
+ .b32 7892
  .b8 7
 
- .b32 6657
+ .b32 6539
  .b8 12
  .b8 0
 }
@@ -7383,32 +7265,6 @@ func_end7:
 
  .b8 19
 
- .b8 0
-
- .b8 3
-
- .b8 8
-
- .b8 11
-
- .b8 6
-
- .b8 58
-
- .b8 6
-
- .b8 59
-
- .b8 6
-
- .b8 0
-
- .b8 0
-
- .b8 4
-
- .b8 19
-
  .b8 1
 
  .b8 3
@@ -7431,7 +7287,7 @@ func_end7:
 
  .b8 0
 
- .b8 5
+ .b8 4
 
  .b8 13
 
@@ -7465,7 +7321,7 @@ func_end7:
 
  .b8 0
 
- .b8 6
+ .b8 5
 
  .b8 36
 
@@ -7480,6 +7336,32 @@ func_end7:
  .b8 11
 
  .b8 11
+
+ .b8 6
+
+ .b8 0
+
+ .b8 0
+
+ .b8 6
+
+ .b8 19
+
+ .b8 0
+
+ .b8 3
+
+ .b8 8
+
+ .b8 11
+
+ .b8 6
+
+ .b8 58
+
+ .b8 6
+
+ .b8 59
 
  .b8 6
 
@@ -8127,12 +8009,12 @@ func_end7:
 .section .debug_ranges {
 }
 .section .debug_pubnames {
- .b32 568
+ .b32 571
  .b8 2
  .b8 0
  .b32 .debug_info
- .b32 8013
- .b32 7614
+ .b32 7895
+ .b32 7496
  .b8 95
  .b8 90
  .b8 78
@@ -8168,79 +8050,7 @@ func_end7:
  .b8 102
  .b8 0
 
- .b32 7237
- .b8 95
- .b8 90
- .b8 78
- .b8 51
- .b8 52
- .b8 95
- .b8 73
- .b8 78
- .b8 84
- .b8 69
- .b8 82
- .b8 78
- .b8 65
- .b8 76
- .b8 95
- .b8 49
- .b8 50
- .b8 95
- .b8 116
- .b8 101
- .b8 115
- .b8 116
- .b8 95
- .b8 99
- .b8 112
- .b8 112
- .b8 49
- .b8 95
- .b8 105
- .b8 105
- .b8 95
- .b8 98
- .b8 48
- .b8 49
- .b8 98
- .b8 51
- .b8 57
- .b8 48
- .b8 101
- .b8 53
- .b8 111
- .b8 112
- .b8 116
- .b8 105
- .b8 120
- .b8 49
- .b8 51
- .b8 114
- .b8 116
- .b8 95
- .b8 98
- .b8 117
- .b8 102
- .b8 102
- .b8 101
- .b8 114
- .b8 95
- .b8 103
- .b8 101
- .b8 116
- .b8 69
- .b8 80
- .b8 118
- .b8 106
- .b8 106
- .b8 121
- .b8 121
- .b8 121
- .b8 121
- .b8 0
-
- .b32 7160
+ .b32 7042
  .b8 95
  .b8 90
  .b8 78
@@ -8274,86 +8084,137 @@ func_end7:
  .b8 121
  .b8 0
 
- .b32 5861
+ .b32 7119
  .b8 95
  .b8 90
  .b8 78
- .b8 53
- .b8 111
- .b8 112
- .b8 116
- .b8 105
- .b8 120
- .b8 55
- .b8 115
- .b8 105
- .b8 122
- .b8 101
+ .b8 51
+ .b8 52
  .b8 95
- .b8 116
- .b8 50
- .b8 67
+ .b8 73
+ .b8 78
+ .b8 84
+ .b8 69
+ .b8 82
+ .b8 78
+ .b8 65
+ .b8 76
+ .b8 95
  .b8 49
- .b8 69
- .b8 53
- .b8 117
- .b8 105
- .b8 110
- .b8 116
  .b8 50
- .b8 0
-
- .b32 5994
  .b8 95
- .b8 90
- .b8 78
+ .b8 116
+ .b8 101
+ .b8 115
+ .b8 116
+ .b8 95
+ .b8 99
+ .b8 112
+ .b8 112
+ .b8 49
+ .b8 95
+ .b8 105
+ .b8 105
+ .b8 95
+ .b8 97
+ .b8 49
+ .b8 100
+ .b8 101
+ .b8 53
+ .b8 51
+ .b8 100
+ .b8 97
  .b8 53
  .b8 111
  .b8 112
  .b8 116
  .b8 105
  .b8 120
- .b8 55
- .b8 115
- .b8 105
- .b8 122
- .b8 101
- .b8 95
- .b8 116
- .b8 50
- .b8 67
- .b8 50
- .b8 69
- .b8 53
- .b8 117
- .b8 105
- .b8 110
- .b8 116
- .b8 50
- .b8 0
-
- .b32 5319
- .b8 95
- .b8 90
  .b8 49
  .b8 51
  .b8 114
- .b8 97
- .b8 121
- .b8 103
- .b8 101
- .b8 110
+ .b8 116
+ .b8 95
+ .b8 98
+ .b8 117
+ .b8 102
+ .b8 102
  .b8 101
  .b8 114
- .b8 97
+ .b8 95
+ .b8 103
+ .b8 101
  .b8 116
- .b8 105
- .b8 111
- .b8 110
+ .b8 69
+ .b8 80
  .b8 118
+ .b8 106
+ .b8 106
+ .b8 121
+ .b8 121
+ .b8 121
+ .b8 121
  .b8 0
 
- .b32 6485
+ .b32 5743
+ .b8 95
+ .b8 90
+ .b8 78
+ .b8 53
+ .b8 111
+ .b8 112
+ .b8 116
+ .b8 105
+ .b8 120
+ .b8 55
+ .b8 115
+ .b8 105
+ .b8 122
+ .b8 101
+ .b8 95
+ .b8 116
+ .b8 50
+ .b8 67
+ .b8 49
+ .b8 69
+ .b8 53
+ .b8 117
+ .b8 105
+ .b8 110
+ .b8 116
+ .b8 50
+ .b8 0
+
+ .b32 5876
+ .b8 95
+ .b8 90
+ .b8 78
+ .b8 53
+ .b8 111
+ .b8 112
+ .b8 116
+ .b8 105
+ .b8 120
+ .b8 55
+ .b8 115
+ .b8 105
+ .b8 122
+ .b8 101
+ .b8 95
+ .b8 116
+ .b8 50
+ .b8 67
+ .b8 50
+ .b8 69
+ .b8 53
+ .b8 117
+ .b8 105
+ .b8 110
+ .b8 116
+ .b8 50
+ .b8 0
+
+ .b32 6367
  .b8 95
  .b8 90
  .b8 78
@@ -8410,7 +8271,7 @@ func_end7:
  .b8 69
  .b8 0
 
- .b32 6770
+ .b32 6652
  .b8 95
  .b8 90
  .b8 78
@@ -8474,7 +8335,7 @@ func_end7:
  .b8 95
  .b8 0
 
- .b32 6117
+ .b32 5999
  .b8 95
  .b8 90
  .b8 78
@@ -8498,7 +8359,7 @@ func_end7:
  .b8 118
  .b8 0
 
- .b32 6217
+ .b32 6099
  .b8 95
  .b8 90
  .b8 78
@@ -8522,7 +8383,38 @@ func_end7:
  .b8 118
  .b8 0
 
- .b32 4948
+ .b32 6811
+ .b8 95
+ .b8 90
+ .b8 78
+ .b8 53
+ .b8 111
+ .b8 112
+ .b8 116
+ .b8 105
+ .b8 120
+ .b8 49
+ .b8 50
+ .b8 109
+ .b8 97
+ .b8 107
+ .b8 101
+ .b8 95
+ .b8 115
+ .b8 105
+ .b8 122
+ .b8 101
+ .b8 95
+ .b8 116
+ .b8 52
+ .b8 69
+ .b8 121
+ .b8 121
+ .b8 121
+ .b8 121
+ .b8 0
+
+ .b32 4824
  .b8 95
  .b8 90
  .b8 78
@@ -8554,14 +8446,14 @@ func_end7:
  .b8 105
  .b8 105
  .b8 95
- .b8 98
- .b8 48
+ .b8 97
  .b8 49
- .b8 98
- .b8 51
- .b8 57
- .b8 48
+ .b8 100
  .b8 101
+ .b8 53
+ .b8 51
+ .b8 100
+ .b8 97
  .b8 49
  .b8 49
  .b8 109
@@ -8582,38 +8474,31 @@ func_end7:
  .b8 102
  .b8 0
 
- .b32 6929
+ .b32 5195
  .b8 95
  .b8 90
- .b8 78
- .b8 53
- .b8 111
- .b8 112
- .b8 116
- .b8 105
- .b8 120
  .b8 49
- .b8 50
- .b8 109
+ .b8 54
+ .b8 100
+ .b8 114
  .b8 97
- .b8 107
- .b8 101
+ .b8 119
  .b8 95
  .b8 115
+ .b8 111
+ .b8 108
  .b8 105
- .b8 122
- .b8 101
+ .b8 100
  .b8 95
- .b8 116
- .b8 52
- .b8 69
- .b8 121
- .b8 121
- .b8 121
- .b8 121
+ .b8 99
+ .b8 111
+ .b8 108
+ .b8 111
+ .b8 114
+ .b8 118
  .b8 0
 
- .b32 6312
+ .b32 6194
  .b8 95
  .b8 90
  .b8 78

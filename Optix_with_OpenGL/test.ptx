@@ -132,17 +132,17 @@ func_end0:
 	.reg .b64 	%rd<40>;
 
 
-	.loc 1 38 1
+	.loc 1 39 1
 func_begin1:
 	.loc	1 0 0
 
-	.loc 1 38 1
+	.loc 1 39 1
 
 	mov.u64 	%rd39, __local_depot1;
 	cvta.local.u64 	%SP, %rd39;
 tmp2:
 func_exec_begin1:
-	.loc	1 40 2
+	.loc	1 41 2
 	mov.u64 	%rd1, launch_index;
 	cvta.global.u64 	%rd2, %rd1;
 	ld.u32 	%r1, [%rd2+4];
@@ -174,7 +174,7 @@ func_exec_begin1:
 	st.u64 	[%SP+16], %rd8;
 	st.u64 	[%SP+40], %rd5;
 	st.u64 	[%SP+32], %rd4;
-	.loc	1 40 2
+	.loc	1 41 2
 	bra.uni	tmp3;
 tmp3:
 	.loc	3 399 17
@@ -277,7 +277,7 @@ tmp19:
 	mov.f32 	%f1, 0f00000000;
 	mov.f32 	%f2, %f1;
 tmp20:
-	.loc	1 40 32
+	.loc	1 41 32
 	bra.uni	tmp21;
 tmp21:
 	.loc	8 1928 114
@@ -317,12 +317,12 @@ tmp21:
 	//{
 	}// Callseq End 2
 tmp22:
-	.loc	1 40 32
+	.loc	1 41 32
 	st.f32 	[%rd32+12], %f9;
 	st.f32 	[%rd32+8], %f8;
 	st.f32 	[%rd32+4], %f7;
 	st.f32 	[%rd32], %f6;
-	.loc	1 41 1
+	.loc	1 42 1
 	ret;
 tmp23:
 func_end1:
@@ -624,14 +624,14 @@ tmp35:
 func_end7:
 }
 
-	.file	1 "F:/Study/Optix_with_OpenGL/Optix_with_OpenGL/cuda/test.cu", 1537386041, 1871
+	.file	1 "F:/Study/Optix_with_OpenGL/Optix_with_OpenGL/cuda/test.cu", 1537387955, 1906
 	.file	2 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v9.1\\include\\vector_types.h", 1509767884, 12864
 	.file	3 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optix_device.h", 1525850012, 116316
 	.file	4 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\internal\\optix_defines.h", 1525850012, 3130
 	.file	5 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v9.1\\include\\vector_functions.hpp", 1509767884, 10427
 	.file	6 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\internal\\../optix_sizet.h", 1525850012, 4611
 	.file	7 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\internal/optix_internal.h", 1525850012, 16822
-	.file	8 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_math_namespace.h", 1525850012, 65252
+	.file	8 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optixu/optixu_math_namespace.h", 1525850012, 65252
 
 .section .debug_info {
  .b32 7895
@@ -785,7 +785,7 @@ func_end7:
  .b8 0
  .b32 195
  .b32 1
- .b32 33
+ .b32 34
  .b8 9
  .b8 3
  .b64 launch_index
@@ -876,7 +876,7 @@ func_end7:
  .b8 0
  .b32 320
  .b32 1
- .b32 34
+ .b32 35
  .b8 9
  .b8 3
  .b64 result_buffer
@@ -949,7 +949,7 @@ func_end7:
  .b8 0
  .b32 410
  .b32 1
- .b32 36
+ .b32 37
  .b8 9
  .b8 3
  .b64 draw_color
@@ -1071,7 +1071,7 @@ func_end7:
  .b8 0
  .b32 602
  .b32 1
- .b32 33
+ .b32 34
  .b8 9
  .b8 3
  .b64 _ZN21rti_internal_typeinfo12launch_indexE
@@ -1241,7 +1241,7 @@ func_end7:
  .b8 0
  .b32 602
  .b32 1
- .b32 36
+ .b32 37
  .b8 9
  .b8 3
  .b64 _ZN21rti_internal_typeinfo10draw_colorE
@@ -4104,7 +4104,7 @@ func_end7:
  .b8 0
  .b32 3997
  .b32 1
- .b32 33
+ .b32 34
  .b8 9
  .b8 3
  .b64 _ZN21rti_internal_typename12launch_indexE
@@ -4225,7 +4225,7 @@ func_end7:
  .b8 0
  .b32 4134
  .b32 1
- .b32 36
+ .b32 37
  .b8 9
  .b8 3
  .b64 _ZN21rti_internal_typename10draw_colorE
@@ -4327,7 +4327,7 @@ func_end7:
  .b8 0
  .b32 4254
  .b32 1
- .b32 33
+ .b32 34
  .b8 9
  .b8 3
  .b64 _ZN21rti_internal_typeenum12launch_indexE
@@ -4429,7 +4429,7 @@ func_end7:
  .b8 0
  .b32 4254
  .b32 1
- .b32 36
+ .b32 37
  .b8 9
  .b8 3
  .b64 _ZN21rti_internal_typeenum10draw_colorE
@@ -4522,7 +4522,7 @@ func_end7:
  .b8 0
  .b32 4476
  .b32 1
- .b32 33
+ .b32 34
  .b8 9
  .b8 3
  .b64 _ZN21rti_internal_semantic12launch_indexE
@@ -4624,7 +4624,7 @@ func_end7:
  .b8 0
  .b32 4592
  .b32 1
- .b32 36
+ .b32 37
  .b8 9
  .b8 3
  .b64 _ZN21rti_internal_semantic10draw_colorE
@@ -4728,7 +4728,7 @@ func_end7:
  .b8 0
  .b32 4592
  .b32 1
- .b32 33
+ .b32 34
  .b8 9
  .b8 3
  .b64 _ZN23rti_internal_annotation12launch_indexE
@@ -4825,7 +4825,7 @@ func_end7:
  .b8 0
  .b32 4592
  .b32 1
- .b32 36
+ .b32 37
  .b8 9
  .b8 3
  .b64 _ZN23rti_internal_annotation10draw_colorE
@@ -5188,7 +5188,7 @@ func_end7:
 
  .b8 0
  .b32 1
- .b32 38
+ .b32 39
  .b32 932
  .b8 1
  .b64 func_begin1
@@ -5221,7 +5221,7 @@ func_end7:
  .b64 tmp3
  .b64 tmp20
  .b32 1
- .b32 40
+ .b32 41
  .b8 20
 
  .b32 6298
@@ -5457,7 +5457,7 @@ func_end7:
  .b64 tmp21
  .b64 tmp22
  .b32 1
- .b32 40
+ .b32 41
  .b8 20
 
  .b32 7578

@@ -119,12 +119,14 @@
     </Link>
     <CudaCompile>
       <NvccCompilation>ptx</NvccCompilation>
-      <KeepDir>$(ProjectDir)cuda</KeepDir>
+      <KeepDir>
+      </KeepDir>
       <TargetMachinePlatform>64</TargetMachinePlatform>
       <Keep>true</Keep>
-      <CompileOut>%(Filename).ptx</CompileOut>
+      <CompileOut>$(ProjectDir)cuda\%(Filename).ptx</CompileOut>
       <InterleaveSourceInPTX>false</InterleaveSourceInPTX>
       <Include>C:\ProgramData\NVIDIA Corporation\OptiX SDK 5.1.0\include</Include>
+      <GenerateRelocatableDeviceCode>false</GenerateRelocatableDeviceCode>
     </CudaCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -173,7 +175,7 @@
       <KeepDir>$(ProjectDir)cuda</KeepDir>
       <TargetMachinePlatform>64</TargetMachinePlatform>
       <Keep>true</Keep>
-      <CompileOut>%(Filename).ptx</CompileOut>
+      <CompileOut>$(ProjectDir)cuda\%(Filename).ptx</CompileOut>
       <Include>C:\ProgramData\NVIDIA Corporation\OptiX SDK 5.1.0\include</Include>
     </CudaCompile>
   </ItemDefinitionGroup>

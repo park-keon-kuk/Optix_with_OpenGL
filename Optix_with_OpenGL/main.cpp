@@ -38,6 +38,7 @@ int main()
 		// GO TO
 		/* -------------------------------------------------------------------------------------- */
 		my_optix->launch();
+		my_optix->update_opengl_texture();
 		my_optix->render();
 
 

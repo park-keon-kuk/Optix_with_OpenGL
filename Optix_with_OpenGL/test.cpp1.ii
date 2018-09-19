@@ -164014,784 +164014,7 @@ static __inline __declspec(__host__) cudaError_t cudaBindSurfaceToArray(
 
 
 
-#line 1 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optix_cuda.h"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#line 1 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optix_math.h"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#line 1 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu/optixu_math.h"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#line 1 "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v9.1/include\\vector_types.h"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#line 426 "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v9.1/include\\vector_types.h"
-#line 38 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu/optixu_math.h"
-#line 1 "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v9.1/include\\vector_functions.h"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#line 178 "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v9.1/include\\vector_functions.h"
-#line 39 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu/optixu_math.h"
-
-
-
-
-
-
-
-  
-  typedef unsigned int uint;
-  typedef unsigned short ushort;
-
-#line 51 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu/optixu_math.h"
-
-#line 1 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_math_namespace.h"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#line 1 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\../optix.h"
+#line 1 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optix.h"
 
 
 
@@ -169851,14 +169074,71 @@ static inline __declspec(__device__) void rtPrintExceptionDetails()
 
 #line 2604 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optix_device.h"
 
-#line 50 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\../optix.h"
+#line 50 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optix.h"
 
 
-#line 53 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\../optix.h"
+#line 53 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optix.h"
 
 
-#line 56 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\../optix.h"
-#line 57 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_math_namespace.h"
+#line 56 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optix.h"
+#line 30 "F:/Study/Optix_with_OpenGL/Optix_with_OpenGL/cuda/test.cu"
+#line 1 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optixu/optixu_math_namespace.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #line 1 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_vector_functions.h"
 
@@ -170122,58 +169402,14 @@ using ::make_double1; using ::make_double2; using ::make_double3; using ::make_d
 
 #line 83 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_vector_functions.h"
 
-#line 59 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_math_namespace.h"
+#line 59 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optixu/optixu_math_namespace.h"
 
 
 
 
 
 
-#line 66 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_math_namespace.h"
-
-
-
-
-
-
-
-#line 74 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_math_namespace.h"
-
-
-#line 77 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_math_namespace.h"
-
-
-#line 80 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_math_namespace.h"
-
-
-#line 83 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_math_namespace.h"
-
-
-#line 86 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_math_namespace.h"
-
-
-#line 89 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_math_namespace.h"
-
-
-#line 92 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_math_namespace.h"
-
-
-#line 95 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_math_namespace.h"
-
-
-#line 98 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_math_namespace.h"
-
-
-#line 101 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_math_namespace.h"
-
-
-#line 104 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_math_namespace.h"
-
-
-#line 107 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_math_namespace.h"
-
-
-#line 110 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_math_namespace.h"
+#line 66 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optixu/optixu_math_namespace.h"
 
 
 
@@ -170181,22 +169417,66 @@ using ::make_double1; using ::make_double2; using ::make_double3; using ::make_d
 
 
 
+#line 74 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optixu/optixu_math_namespace.h"
 
-#line 119 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_math_namespace.h"
+
+#line 77 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optixu/optixu_math_namespace.h"
+
+
+#line 80 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optixu/optixu_math_namespace.h"
+
+
+#line 83 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optixu/optixu_math_namespace.h"
+
+
+#line 86 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optixu/optixu_math_namespace.h"
+
+
+#line 89 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optixu/optixu_math_namespace.h"
+
+
+#line 92 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optixu/optixu_math_namespace.h"
+
+
+#line 95 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optixu/optixu_math_namespace.h"
+
+
+#line 98 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optixu/optixu_math_namespace.h"
+
+
+#line 101 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optixu/optixu_math_namespace.h"
+
+
+#line 104 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optixu/optixu_math_namespace.h"
+
+
+#line 107 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optixu/optixu_math_namespace.h"
+
+
+#line 110 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optixu/optixu_math_namespace.h"
+
+
+
+
+
+
+
+
+#line 119 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optixu/optixu_math_namespace.h"
 
 
 namespace optix {
 
-
-
-
-
-#line 128 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_math_namespace.h"
   
   
-  using ::uint;
-  using ::ushort;
-#line 133 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_math_namespace.h"
+  typedef unsigned int uint;
+  typedef unsigned short ushort;
+
+
+
+
+
+#line 133 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optixu/optixu_math_namespace.h"
 } 
 
 
@@ -170277,7 +169557,7 @@ namespace optix {
 
 
 
-#line 214 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_math_namespace.h"
+#line 214 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optixu/optixu_math_namespace.h"
 
 namespace optix {
   
@@ -170289,7 +169569,7 @@ namespace optix {
   using ::fminf;
   using ::fmaxf;
   using ::copysignf;
-#line 226 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_math_namespace.h"
+#line 226 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optixu/optixu_math_namespace.h"
   using ::expf;
   using ::floorf;
 
@@ -170310,7 +169590,7 @@ namespace optix {
 
 
 
-#line 247 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_math_namespace.h"
+#line 247 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optixu/optixu_math_namespace.h"
 
 } 
 
@@ -170351,7 +169631,7 @@ namespace optix {
 
 
 
-#line 288 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_math_namespace.h"
+#line 288 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optixu/optixu_math_namespace.h"
 
 
 
@@ -172319,7 +171599,7 @@ using optix::operator*=;
 using optix::operator/;
 using optix::operator/=;
 using optix::operator==;
-#line 2256 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_math_namespace.h"
+#line 2256 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optixu/optixu_math_namespace.h"
 
 
 
@@ -172351,76 +171631,28 @@ using optix::make_double1; using optix::make_double2; using optix::make_double3;
 
 
 
-#line 2288 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_math_namespace.h"
+#line 2288 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optixu/optixu_math_namespace.h"
 
 
 
 using optix::fmaxf;
 using optix::fminf;
 using optix::copysignf;
-#line 2295 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_math_namespace.h"
+#line 2295 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optixu/optixu_math_namespace.h"
 
 
 using optix::expf;
 using optix::floor;
-#line 2300 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_math_namespace.h"
+#line 2300 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optixu/optixu_math_namespace.h"
 
 
 
 
-#line 2305 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_math_namespace.h"
+#line 2305 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optixu/optixu_math_namespace.h"
 
-#line 2307 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu\\optixu_math_namespace.h"
+#line 2307 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optixu/optixu_math_namespace.h"
 
-#line 53 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu/optixu_math.h"
-
-
-
-
-
-
-
-
-
-
-
-using optix::uint;
-using optix::ushort;
-
-
-using optix::copysignf;
-using optix::expf;
-using optix::floor;
-using optix::fmaxf;
-using optix::fminf;
-using optix::max;
-using optix::min;
-
-
-using optix::clamp;
-using optix::cross;
-using optix::dot;
-using optix::faceforward;
-using optix::fresnel_schlick;
-using optix::length;
-using optix::lerp;
-using optix::normalize;
-using optix::reflect;
-using optix::refract;
-using optix::smoothstep;
-using optix::temperature;
-
-#line 91 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optixu/optixu_math.h"
-#line 30 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optix_math.h"
-
-#line 32 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optix_math.h"
-#line 37 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optix_cuda.h"
-
-
-#line 40 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optix_cuda.h"
-#line 30 "F:/Study/Optix_with_OpenGL/Optix_with_OpenGL/cuda/test.cu"
-
-
+#line 31 "F:/Study/Optix_with_OpenGL/Optix_with_OpenGL/cuda/test.cu"
 
 using namespace optix;
 
