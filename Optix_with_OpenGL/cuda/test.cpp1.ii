@@ -163986,7 +163986,35 @@ static __inline __declspec(__host__) cudaError_t cudaBindSurfaceToArray(
 #line 2041 "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v9.1/include\\cuda_runtime.h"
 
 #line 1 "F:/Study/Optix_with_OpenGL/Optix_with_OpenGL/cuda/test.cu"
-#line 1 "C:\\ProgramData\\NVIDIA Corporation\\OptiX SDK 5.1.0\\include\\optix_cuda.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 1 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optix_cuda.h"
 
 
 
@@ -172386,18 +172414,16 @@ using optix::temperature;
 #line 30 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optix_math.h"
 
 #line 32 "c:\\programdata\\nvidia corporation\\optix sdk 5.1.0\\include\\optix_math.h"
-#line 37 "C:\\ProgramData\\NVIDIA Corporation\\OptiX SDK 5.1.0\\include\\optix_cuda.h"
+#line 37 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optix_cuda.h"
 
 
-#line 40 "C:\\ProgramData\\NVIDIA Corporation\\OptiX SDK 5.1.0\\include\\optix_cuda.h"
-#line 2 "F:/Study/Optix_with_OpenGL/Optix_with_OpenGL/cuda/test.cu"
-
-
+#line 40 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optix_cuda.h"
+#line 30 "F:/Study/Optix_with_OpenGL/Optix_with_OpenGL/cuda/test.cu"
 
 using namespace optix;
 
 namespace rti_internal_typeinfo { __declspec(__device__) ::rti_internal_typeinfo::rti_typeinfo launch_index = { ::rti_internal_typeinfo::_OPTIX_VARIABLE, sizeof(uint2)}; } namespace rti_internal_typename { __declspec(__device__) char launch_index[] = "uint2"; } namespace rti_internal_typeenum { __declspec(__device__) int launch_index = ::rti_internal_typeinfo::rti_typeenum<uint2>::m_typeenum; } namespace rti_internal_semantic { __declspec(__device__) char launch_index[] = "rtLaunchIndex"; } namespace rti_internal_annotation { __declspec(__device__) char launch_index[] = ""; } __declspec(__device__) uint2 launch_index;
-__declspec(__device__) optix::buffer<float4, 2> result_buffer;
+__declspec(__device__) optix::buffer<float4, 2>   result_buffer;
 
 namespace rti_internal_typeinfo { __declspec(__device__) ::rti_internal_typeinfo::rti_typeinfo draw_color = { ::rti_internal_typeinfo::_OPTIX_VARIABLE, sizeof(float3)}; } namespace rti_internal_typename { __declspec(__device__) char draw_color[] = "float3"; } namespace rti_internal_typeenum { __declspec(__device__) int draw_color = ::rti_internal_typeinfo::rti_typeenum<float3>::m_typeenum; } namespace rti_internal_semantic { __declspec(__device__) char draw_color[] = ""; } namespace rti_internal_annotation { __declspec(__device__) char draw_color[] = ""; } __declspec(__device__) float3 draw_color;
 
