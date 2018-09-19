@@ -158,6 +158,9 @@
     <ClInclude Include="gui.h" />
     <ClInclude Include="my_optix.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="cuda\test.cu" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

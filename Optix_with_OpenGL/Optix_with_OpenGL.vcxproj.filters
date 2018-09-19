@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="cuda">
+      <UniqueIdentifier>{121e626e-9a46-41a8-b790-7a9a94f8f6eb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="gui.cpp">
@@ -30,5 +33,10 @@
     <ClInclude Include="my_optix.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cuda\test.cu">
+      <Filter>cuda</Filter>
+    </None>
   </ItemGroup>
 </Project>
