@@ -12,4 +12,7 @@ class MyOptix
 public:
 	MyOptix();
 	virtual ~MyOptix();
+
+	void launch();
+	void render();
 };

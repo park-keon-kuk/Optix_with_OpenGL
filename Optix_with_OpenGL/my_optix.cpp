@@ -1,4 +1,5 @@
 #include "my_optix.h"
+#include "gui.h"
 
 MyOptix::MyOptix()
 {
@@ -15,4 +16,13 @@ MyOptix::~MyOptix()
 
 	rtContextDestroy(m_context);
 	m_context = nullptr;
+}
+
+void MyOptix::launch()
+{
+	rtContextLaunch2D(m_context, 0, g_width, g_height);
+}
+
+void MyOptix::render()
+{
 }
