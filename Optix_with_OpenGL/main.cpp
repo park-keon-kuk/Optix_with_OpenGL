@@ -10,8 +10,8 @@ int main()
 	glfwInit();
 	glfwSetErrorCallback([](int err, const char* desc) { puts(desc); });
 	initContext(/*use dafault = */ true);
+	framebufferSizeCallback(nullptr, 512, 512);
 	GLFWwindow *window = glfwCreateWindow(g_width, g_height, "Optix!!", nullptr, nullptr);
-	framebufferSizeCallback(window, 512, 512);
 	glfwSetFramebufferSizeCallback(window, framebufferSizeCallback);
 	glfwSetCursorPosCallback(window, cursorPosCallback);
 	glfwMakeContextCurrent(window);
