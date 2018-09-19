@@ -1,7 +1,4 @@
-// WINDOW
 #include "gui.h"
-
-// OPTIX
 #include "my_optix.h"
 
 int main()
