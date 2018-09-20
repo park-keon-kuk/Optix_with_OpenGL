@@ -30,11 +30,14 @@
 
 using namespace optix;
 
+// 변수
 rtDeclareVariable(uint2, launch_index, rtLaunchIndex, );
-rtBuffer<float4, 2>   result_buffer;
-
 rtDeclareVariable(float3, draw_color, , );
 
+// 버퍼
+rtBuffer<float4, 2>   result_buffer;
+
+// 프로그램
 RT_PROGRAM void draw_solid_color()
 {
 	result_buffer[launch_index] = make_float4(draw_color, 0.f);
