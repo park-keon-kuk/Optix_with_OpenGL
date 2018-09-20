@@ -43,5 +43,18 @@ RT_PROGRAM void draw_solid_color()
 	size_t2 size = result_buffer.size();
 	float3 color = make_float3(0, 0, 0);
 
-	result_buffer[launch_index] = make_float4(draw_color, 0.f);
+	if (launch_index.x > 50 && launch_index.x < 100
+		&& launch_index.y > 50 && launch_index.y < 100) 
+	{
+		color = make_float3(1, 0, 0);
+	}
+
+	result_buffer[launch_index] = make_float4(color, 0.f);
+}
+
+RT_PROGRAM void exception()
+{
+	const unsigned int code = rtGetExceptionCode();
+	rtPrintf("Caught exception 0x%X at launch index (%d,%d)\n", code, launch_index.x, launch_index.y);
+	result_buffer[launch_index] = make_float4(0.f, 0.f, 0.f, 0.f);
 }

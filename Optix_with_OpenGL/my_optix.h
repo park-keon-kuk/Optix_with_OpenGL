@@ -9,7 +9,9 @@ class MyOptix
 {
 	RTcontext m_context = nullptr;
 	RTbuffer m_buffer = nullptr;
-	RTprogram m_program = nullptr;
+	RTprogram m_ray_gen_program = nullptr;
+	RTprogram m_exception_program = nullptr;
+
 	RTvariable m_result_buffer = nullptr;
 	RTvariable m_draw_color = nullptr;
 
@@ -23,6 +25,8 @@ public:
 	virtual ~MyOptix();
 
 	bool initialize(int width, int height);
+	void terminate();
+
 	void launch();
 	void update_opengl_texture();
 	void render();

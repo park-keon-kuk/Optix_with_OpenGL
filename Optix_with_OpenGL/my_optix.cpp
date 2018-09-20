@@ -12,16 +12,10 @@ std::string load_file(const char* filepath);
 
 // 메소드 구현
 /**********************************************************************/
-
 MyOptix::~MyOptix()
 {
-	// 종료
-	/**********************************************************************/
-	rtBufferDestroy(m_buffer);
-	rtProgramDestroy(m_program);
-	rtContextDestroy(m_context);
-
-	glDeleteTextures(1, &m_opengl_texture_id);
+	if (m_context)
+		terminate();
 }
 
 bool MyOptix::initialize(int width, int height)
@@ -45,13 +39,20 @@ bool MyOptix::initialize(int width, int height)
 	result += rtContextDeclareVariable(m_context, "result_buffer", &m_result_buffer);
 	result += rtVariableSetObject(m_result_buffer, m_buffer);
 
-	// Program
+	// Program PTX File
 	std::string ptx = load_file("./cuda/test.ptx");
-	result += rtProgramCreateFromPTXString(m_context, ptx.c_str(), "draw_solid_color", &m_program);
-	result += rtProgramDeclareVariable(m_program, "draw_color", &m_draw_color);
+	
+	//__ Ray Gen Program( draw_solid_color )
+	result += rtProgramCreateFromPTXString(m_context, ptx.c_str(), "draw_solid_color", &m_ray_gen_program);
+	result += rtProgramDeclareVariable(m_ray_gen_program, "draw_color", &m_draw_color);
 	result += rtVariableSet3f(m_draw_color, 1.f, 0.f, 0.f);
-	result += rtContextSetRayGenerationProgram(m_context, 0, m_program);
+	result += rtContextSetRayGenerationProgram(m_context, 0, m_ray_gen_program);
+	
+	//__ Exception Program( exception )
+	result += rtProgramCreateFromPTXString(m_context, ptx.c_str(), "exception", &m_exception_program);
+	result += rtContextSetExceptionProgram(m_context, 0, m_exception_program);
 
+	// Validate
 	result += rtContextValidate(m_context);
 
 	// GL
@@ -67,6 +68,18 @@ bool MyOptix::initialize(int width, int height)
 	glBindTexture(GL_TEXTURE_2D, 0);
 
 	return (result == 0) && (m_opengl_texture_id != 0);
+}
+
+void MyOptix::terminate()
+{
+	// Optix
+	rtBufferDestroy(m_buffer);					m_buffer = nullptr;
+	rtProgramDestroy(m_ray_gen_program);		m_ray_gen_program = nullptr;
+	rtProgramDestroy(m_exception_program);		m_exception_program = nullptr;
+	rtContextDestroy(m_context);				m_context = nullptr;
+
+	// GL
+	glDeleteTextures(1, &m_opengl_texture_id);	m_opengl_texture_id = 0;
 }
 
 void MyOptix::launch()
