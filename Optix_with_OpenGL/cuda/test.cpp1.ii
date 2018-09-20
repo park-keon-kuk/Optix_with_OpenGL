@@ -172420,8 +172420,6 @@ using optix::temperature;
 #line 40 "C:/ProgramData/NVIDIA Corporation/OptiX SDK 5.1.0/include\\optix_cuda.h"
 #line 30 "F:/Study/Optix_with_OpenGL/Optix_with_OpenGL/cuda/test.cu"
 
-
-
 using namespace optix;
 
 namespace rti_internal_typeinfo { __declspec(__device__) ::rti_internal_typeinfo::rti_typeinfo launch_index = { ::rti_internal_typeinfo::_OPTIX_VARIABLE, sizeof(uint2)}; } namespace rti_internal_typename { __declspec(__device__) char launch_index[] = "uint2"; } namespace rti_internal_typeenum { __declspec(__device__) int launch_index = ::rti_internal_typeinfo::rti_typeenum<uint2>::m_typeenum; } namespace rti_internal_semantic { __declspec(__device__) char launch_index[] = "rtLaunchIndex"; } namespace rti_internal_annotation { __declspec(__device__) char launch_index[] = ""; } __declspec(__device__) uint2 launch_index;

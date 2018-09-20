@@ -19,24 +19,23 @@ MyOptix::MyOptix()
 
 	// √ ±‚»≠
 	/**********************************************************************/
-	RTresult result;
-	result = rtContextCreate(&m_context);
-	result = rtContextSetRayTypeCount(m_context, 1);
-	result = rtContextSetEntryPointCount(m_context, 1);
+	rtContextCreate(&m_context);
+	rtContextSetRayTypeCount(m_context, 1);
+	rtContextSetEntryPointCount(m_context, 1);
 
-	result = rtBufferCreate(m_context, RT_BUFFER_OUTPUT, &m_buffer);
-	result = rtBufferSetFormat(m_buffer, RT_FORMAT_FLOAT4);
-	result = rtBufferSetSize2D(m_buffer, g_width, g_height);
-	result = rtContextDeclareVariable(m_context, "result_buffer", &m_result_buffer);
-	result = rtVariableSetObject(m_result_buffer, m_buffer);
+	rtBufferCreate(m_context, RT_BUFFER_OUTPUT, &m_buffer);
+	rtBufferSetFormat(m_buffer, RT_FORMAT_FLOAT4);
+	rtBufferSetSize2D(m_buffer, g_width, g_height);
+	rtContextDeclareVariable(m_context, "result_buffer", &m_result_buffer);
+	rtVariableSetObject(m_result_buffer, m_buffer);
 
 	std::string ptx = load_file("./cuda/test.ptx");
-	result = rtProgramCreateFromPTXString(m_context, ptx.c_str(), "draw_solid_color", &m_program);
-	result = rtProgramDeclareVariable(m_program, "draw_color", &m_draw_color);
-	result = rtVariableSet3f(m_draw_color, 1.f, 0.f, 0.f);
-	result = rtContextSetRayGenerationProgram(m_context, 0, m_program);
+	rtProgramCreateFromPTXString(m_context, ptx.c_str(), "draw_solid_color", &m_program);
+	rtProgramDeclareVariable(m_program, "draw_color", &m_draw_color);
+	rtVariableSet3f(m_draw_color, 1.f, 0.f, 0.f);
+	rtContextSetRayGenerationProgram(m_context, 0, m_program);
 
-	result = rtContextValidate(m_context);
+	rtContextValidate(m_context);
 
 	glGenTextures(1, &m_opengl_texture_id);
 	glBindTexture(GL_TEXTURE_2D, m_opengl_texture_id);

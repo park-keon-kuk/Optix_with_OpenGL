@@ -26,8 +26,7 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <optix.h>
-#include <optixu/optixu_math_namespace.h>
+#include <optix_cuda.h>
 
 using namespace optix;
 
