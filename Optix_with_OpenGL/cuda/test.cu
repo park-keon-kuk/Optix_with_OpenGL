@@ -43,14 +43,5 @@ RT_PROGRAM void draw_solid_color()
 	size_t2 size = result_buffer.size();
 	float3 color = make_float3(0, 0, 0);
 
-	if (launch_index.x < 100)
-		color.x = 1.f;
-	if (launch_index.x > size.x - 100)
-		color.z = 1.f;
-
-	if (launch_index.y > size.y - 100 ||
-		launch_index.y < 100)
-		color.y = 1.f;
-
-	result_buffer[launch_index] = make_float4(color, 0.f);
+	result_buffer[launch_index] = make_float4(draw_color, 0.f);
 }

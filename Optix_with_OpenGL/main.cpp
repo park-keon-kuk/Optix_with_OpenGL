@@ -22,16 +22,15 @@ int main()
 
 	/* 초기화 */
 	/* -------------------------------------------------------------------------------------- */
-	if (my_optix->initialize(300, 300) == false) {
-		delete my_optix;
-		glfwTerminate();
-
-		puts("Optix 초기화 실패!");
-
-		return 0;
+	bool result = my_optix->initialize(300, 300);
+	if (result) {
+		puts("Optix 초기화 성공!");
 	}
 	else {
-		puts("Optix 초기화 성공!");
+		delete my_optix;
+		glfwTerminate();
+		puts("Optix 초기화 실패!");
+		return 0;
 	}
 
 
