@@ -122,9 +122,10 @@
       <KeepDir>$(ProjectDir)cuda</KeepDir>
       <TargetMachinePlatform>64</TargetMachinePlatform>
       <Keep>true</Keep>
-      <CompileOut>(Filename).ptx</CompileOut>
+      <CompileOut>$(ProjectDir)cuda\%(Filename).ptx</CompileOut>
       <InterleaveSourceInPTX>false</InterleaveSourceInPTX>
-      <Include>C:\ProgramData\NVIDIA Corporation\OptiX SDK 5.1.0\include</Include>
+      <Include>
+      </Include>
       <GenerateRelocatableDeviceCode>false</GenerateRelocatableDeviceCode>
       <HostDebugInfo>false</HostDebugInfo>
       <GPUDebugInfo>false</GPUDebugInfo>
