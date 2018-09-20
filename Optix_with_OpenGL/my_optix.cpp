@@ -12,45 +12,9 @@ std::string load_file(const char* filepath);
 
 // 메소드 구현
 /**********************************************************************/
-MyOptix::MyOptix()
-{
-	if (m_context)
-		return;
-
-	// 초기화
-	/**********************************************************************/
-	rtContextCreate(&m_context);
-	rtContextSetRayTypeCount(m_context, 1);
-	rtContextSetEntryPointCount(m_context, 1);
-
-	rtBufferCreate(m_context, RT_BUFFER_OUTPUT, &m_buffer);
-	rtBufferSetFormat(m_buffer, RT_FORMAT_FLOAT4);
-	rtBufferSetSize2D(m_buffer, g_width, g_height);
-	rtContextDeclareVariable(m_context, "result_buffer", &m_result_buffer);
-	rtVariableSetObject(m_result_buffer, m_buffer);
-
-	std::string ptx = load_file("./cuda/test.ptx");
-	rtProgramCreateFromPTXString(m_context, ptx.c_str(), "draw_solid_color", &m_program);
-	rtProgramDeclareVariable(m_program, "draw_color", &m_draw_color);
-	rtVariableSet3f(m_draw_color, 1.f, 0.f, 0.f);
-	rtContextSetRayGenerationProgram(m_context, 0, m_program);
-
-	rtContextValidate(m_context);
-
-	glGenTextures(1, &m_opengl_texture_id);
-	glBindTexture(GL_TEXTURE_2D, m_opengl_texture_id);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-	glBindTexture(GL_TEXTURE_2D, 0);
-}
 
 MyOptix::~MyOptix()
 {
-	if (!m_context)
-		return;
-
 	// 종료
 	/**********************************************************************/
 	rtBufferDestroy(m_buffer);
@@ -60,10 +24,55 @@ MyOptix::~MyOptix()
 	glDeleteTextures(1, &m_opengl_texture_id);
 }
 
+bool MyOptix::initialize(int width, int height)
+{
+	m_width = width;
+	m_height = height;
+
+	// Optix
+	/************************************************************************/
+	unsigned int result = 0;
+
+	// Context
+	result += rtContextCreate(&m_context);
+	result += rtContextSetRayTypeCount(m_context, 1);
+	result += rtContextSetEntryPointCount(m_context, 1);
+
+	// Buffer
+	result += rtBufferCreate(m_context, RT_BUFFER_OUTPUT, &m_buffer);
+	result += rtBufferSetFormat(m_buffer, RT_FORMAT_FLOAT4);
+	result += rtBufferSetSize2D(m_buffer, m_width, m_height);
+	result += rtContextDeclareVariable(m_context, "result_buffer", &m_result_buffer);
+	result += rtVariableSetObject(m_result_buffer, m_buffer);
+
+	// Program
+	std::string ptx = load_file("./cuda/test.ptx");
+	result += rtProgramCreateFromPTXString(m_context, ptx.c_str(), "draw_solid_color", &m_program);
+	result += rtProgramDeclareVariable(m_program, "draw_color", &m_draw_color);
+	result += rtVariableSet3f(m_draw_color, 1.f, 0.f, 0.f);
+	result += rtContextSetRayGenerationProgram(m_context, 0, m_program);
+
+	result += rtContextValidate(m_context);
+
+	// GL
+	/************************************************************************/
+	
+	// Texture
+	glGenTextures(1, &m_opengl_texture_id);
+	glBindTexture(GL_TEXTURE_2D, m_opengl_texture_id);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	glBindTexture(GL_TEXTURE_2D, 0);
+
+	return (result == 0) && (m_opengl_texture_id != 0);
+}
+
 void MyOptix::launch()
 {
 	RTresult result;
-	result = rtContextLaunch2D(m_context, 0 /* entry point */, g_width, g_height);
+	result = rtContextLaunch2D(m_context, 0 /* entry point */, m_width, m_width);
 }
 
 void MyOptix::update_opengl_texture()

@@ -14,11 +14,15 @@ class MyOptix
 	RTvariable m_draw_color = nullptr;
 
 	GLuint m_opengl_texture_id = 0;
+	
+	int m_width;
+	int m_height;
 
 public:
-	MyOptix();
+	MyOptix() = default;
 	virtual ~MyOptix();
 
+	bool initialize(int width, int height);
 	void launch();
 	void update_opengl_texture();
 	void render();

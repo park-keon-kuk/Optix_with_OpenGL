@@ -8,7 +8,7 @@ int main()
 	glfwInit();
 	glfwSetErrorCallback([](int err, const char* desc) { puts(desc); });
 	initContext(/*use dafault = */ true);
-	framebufferSizeCallback(nullptr, 512, 512);
+	framebufferSizeCallback(nullptr, 256, 256);
 	GLFWwindow *window = glfwCreateWindow(g_width, g_height, "Optix!!", nullptr, nullptr);
 	glfwSetFramebufferSizeCallback(window, framebufferSizeCallback);
 	glfwSetCursorPosCallback(window, cursorPosCallback);
@@ -22,6 +22,17 @@ int main()
 
 	/* 초기화 */
 	/* -------------------------------------------------------------------------------------- */
+	if (my_optix->initialize(300, 300) == false) {
+		delete my_optix;
+		glfwTerminate();
+
+		puts("Optix 초기화 실패!");
+
+		return 0;
+	}
+	else {
+		puts("Optix 초기화 성공!");
+	}
 
 
 	/* 메인 루프 */
