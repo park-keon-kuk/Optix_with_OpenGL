@@ -53,7 +53,7 @@
 
 )
 {
-	.reg .f32 	%f<3>;
+	.reg .f32 	%f<5>;
 	.reg .b32 	%r<7>;
 	.reg .b64 	%rd<8>;
 
@@ -69,9 +69,11 @@
 	// inline asm
 	call (%rd1), _rt_buffer_get_64, (%rd2, %r1, %r2, %rd3, %rd4, %rd6, %rd6);
 	// inline asm
-	mov.f32 	%f1, 0f3F800000;
-	mov.f32 	%f2, 0f00000000;
-	st.v4.f32 	[%rd1], {%f2, %f1, %f2, %f2};
+	ld.global.f32 	%f1, [draw_color+8];
+	ld.global.f32 	%f2, [draw_color+4];
+	ld.global.f32 	%f3, [draw_color];
+	mov.f32 	%f4, 0f00000000;
+	st.v4.f32 	[%rd1], {%f3, %f2, %f1, %f4};
 	ret;
 }
 

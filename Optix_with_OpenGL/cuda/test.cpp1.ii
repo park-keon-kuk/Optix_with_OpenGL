@@ -172429,6 +172429,5 @@ namespace rti_internal_typeinfo { __declspec(__device__) ::rti_internal_typeinfo
 
 __declspec(__global__) void draw_solid_color()
 {
-
-	result_buffer[launch_index] = make_float4(0, 1, 0, 0.f);
+	result_buffer[launch_index] = make_float4(draw_color, 0.f);
 }

@@ -178,7 +178,8 @@
       <TargetMachinePlatform>64</TargetMachinePlatform>
       <Keep>true</Keep>
       <CompileOut>$(ProjectDir)cuda\%(Filename).ptx</CompileOut>
-      <Include>C:\ProgramData\NVIDIA Corporation\OptiX SDK 5.1.0\include</Include>
+      <Include>
+      </Include>
     </CudaCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
