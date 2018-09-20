@@ -242,5 +242,5 @@ ModelManifest.xml
 .fake/
 
 # CUDA chache file
-*.ii
-*.res
+*.cpp1.ii
+*.cpp1.ii.res
