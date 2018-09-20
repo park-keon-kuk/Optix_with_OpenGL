@@ -12,8 +12,8 @@
 
 	// .globl	_Z16draw_solid_colorv
 .global .align 8 .b8 launch_index[8];
-.global .align 1 .b8 result_buffer[1];
 .global .align 4 .b8 draw_color[12];
+.global .align 1 .b8 result_buffer[1];
 .global .align 4 .b8 _ZN21rti_internal_typeinfo12launch_indexE[8] = {82, 97, 121, 0, 8, 0, 0, 0};
 .global .align 4 .b8 _ZN21rti_internal_typeinfo10draw_colorE[8] = {82, 97, 121, 0, 12, 0, 0, 0};
 .global .align 8 .u64 _ZN21rti_internal_register20reg_bitness_detectorE;
@@ -53,27 +53,38 @@
 
 )
 {
+	.reg .pred 	%p<6>;
 	.reg .f32 	%f<5>;
-	.reg .b32 	%r<7>;
-	.reg .b64 	%rd<8>;
+	.reg .b32 	%r<9>;
+	.reg .b64 	%rd<15>;
 
 
-	ld.global.v2.u32 	{%r3, %r4}, [launch_index];
-	cvt.u64.u32	%rd3, %r3;
-	cvt.u64.u32	%rd4, %r4;
-	mov.u64 	%rd7, result_buffer;
-	cvta.global.u64 	%rd2, %rd7;
-	mov.u32 	%r1, 2;
-	mov.u32 	%r2, 16;
-	mov.u64 	%rd6, 0;
+	mov.u64 	%rd12, result_buffer;
+	cvta.global.u64 	%rd5, %rd12;
+	mov.u32 	%r3, 2;
+	mov.u32 	%r4, 16;
 	// inline asm
-	call (%rd1), _rt_buffer_get_64, (%rd2, %r1, %r2, %rd3, %rd4, %rd6, %rd6);
+	call (%rd1, %rd2, %rd3, %rd4), _rt_buffer_get_size_64, (%rd5, %r3, %r4);
 	// inline asm
-	ld.global.f32 	%f1, [draw_color+8];
-	ld.global.f32 	%f2, [draw_color+4];
-	ld.global.f32 	%f3, [draw_color];
+	ld.global.v2.u32 	{%r5, %r6}, [launch_index];
+	setp.lt.u32	%p1, %r5, 100;
+	add.s64 	%rd13, %rd1, -100;
+	cvt.u64.u32	%rd8, %r5;
+	setp.gt.u64	%p2, %rd8, %rd13;
+	add.s64 	%rd14, %rd2, -100;
+	cvt.u64.u32	%rd9, %r6;
+	setp.gt.u64	%p3, %rd9, %rd14;
+	setp.lt.u32	%p4, %r6, 100;
+	or.pred  	%p5, %p3, %p4;
+	mov.u64 	%rd11, 0;
+	// inline asm
+	call (%rd6), _rt_buffer_get_64, (%rd5, %r3, %r4, %rd8, %rd9, %rd11, %rd11);
+	// inline asm
+	selp.f32	%f1, 0f3F800000, 0f00000000, %p2;
+	selp.f32	%f2, 0f3F800000, 0f00000000, %p5;
+	selp.f32	%f3, 0f3F800000, 0f00000000, %p1;
 	mov.f32 	%f4, 0f00000000;
-	st.v4.f32 	[%rd1], {%f3, %f2, %f1, %f4};
+	st.v4.f32 	[%rd6], {%f3, %f2, %f1, %f4};
 	ret;
 }
 
