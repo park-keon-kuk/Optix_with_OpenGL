@@ -37,7 +37,7 @@ rtDeclareVariable(float3, draw_color, , );
 // 버퍼
 rtBuffer<float4, 2>   result_buffer;
 
-// 프로그램
+// Ray Gen
 RT_PROGRAM void draw_solid_color()
 {
 	size_t2 size = result_buffer.size();
@@ -52,6 +52,7 @@ RT_PROGRAM void draw_solid_color()
 	result_buffer[launch_index] = make_float4(color, 0.f);
 }
 
+// Exception
 RT_PROGRAM void exception()
 {
 	const unsigned int code = rtGetExceptionCode();
